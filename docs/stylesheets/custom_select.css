@@ -1,0 +1,126 @@
+/*
+/images/layout/input-main.png
+/images/layout/input-cap.png
+*/
+
+
+.customSelect{
+    display : inline-block;
+    background-repeat : no-repeat;
+	background-image : url(/images/layout/select-cap.png);
+	background-position: top left;
+	padding-left: 8px;
+}
+
+
+/*
+.gender
+{
+	background-image : url(/images/layout/bg5-select.png);
+}*/
+/*
+.customSelect label{
+    display : block;
+    padding : 0 0 8px;
+    line-height : 9px;
+    color : #1c1c1c;
+    font-weight : bold;
+}*/
+/*
+.customSelect span {
+    float : left;
+    display : block;
+    margin : 0 20px 0 4px;
+    line-height : 20px;
+}
+
+.customSelect span.date {
+    margin : 4px 4px 0 0;
+}*/
+
+/* //////////////////// SELECT \\\\\\\\\\\\\\\\\\\\ */
+
+.customSelect .sb-custom {
+    float : left;
+    position: relative;
+    margin : 0;
+    height : 26px;
+}
+.customSelect select {
+    display : none;
+}
+.customSelect select .no-js{
+    display : none;
+}
+
+.customSelect input.sb-select {
+    /*position : absolute;*/
+    /*background-image : url(/images/layout/bg4-select.png);
+    background-repeat : no-repeat;*/
+    background-color : transparent;
+    border:0;
+    padding : 3px 16px 3px 3px;
+    cursor : pointer;
+    font : 14px/18px BreeOblique, Arial, Helvetica, sans-serif;
+    color : #7F7F7F;
+    text-decoration : none;
+    /*width : 200px;*/
+    height : 18px;
+    background-image : url(/images/layout/select-main.png);
+    background-position: top right;
+}
+/*
+.customSelect .sb-overlay {
+    position : relative;
+    z-index : 999;
+}*/
+
+.customSelect ul.sb-dropdown {
+    position : absolute;
+    display : none;
+    background-color : #FFFFFF;
+    border : 1px solid #cdcdcd;
+    top : 22px;
+    left : 0;
+    list-style-type : none;
+    overflow : hidden;
+    overflow-y: auto;
+    z-index : 30;
+    margin : 0;
+    padding : 0;
+    width : 206px;
+    max-height: 200px;
+}
+/*
+.gender ul.sb-dropdown
+{
+	width:68px;
+}
+*/
+.customSelect ul.sb-dropdown li {
+    position : relative;
+    background : none;
+    background-color : #FFFFFF;
+    padding : 0;
+    margin : 0;
+}
+
+.customSelect ul.sb-dropdown a, ul.customSelect .sb-dropdown a:link, ul.customSelect .sb-dropdown a:active, ul.customSelect .sb-dropdown a:visited {
+    display : block;
+    background : none;
+    padding : 0 10px;
+    overflow : hidden;
+    font : 14px/18px BreeOblique, Arial, Helvetica, sans-serif;
+    cursor : pointer;
+    color: #7F7F7F;
+    text-decoration: none;
+    /*width : 205px;*/
+    height : 21px;
+}
+
+.customSelect ul.sb-dropdown a:hover,
+.customSelect ul.sb-dropdown .selected a
+{
+  background-color : #A0BFBE;
+  color:white !important;
+}​

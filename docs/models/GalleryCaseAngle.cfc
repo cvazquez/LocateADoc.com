@@ -1,0 +1,5 @@
+<cfcomponent extends="Model" output="false">
+	<cffunction name="init">
+		<cfset belongsTo("gallerycase")>
+	</cffunction>
+</cfcomponent>

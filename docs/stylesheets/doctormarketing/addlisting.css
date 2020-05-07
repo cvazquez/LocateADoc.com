@@ -1,0 +1,250 @@
+.add-listing-content{
+	/*background: url("/images/resources/contentarea_top.png") repeat-x scroll 0 -3px transparent;*/
+	float: left;
+	margin: 0 0 0 9px;
+	padding: 25px 30px 0;
+	width: 545px;
+	/*font: 12px/15px Arial,Helvetica,sans-serif;*/
+	font: 16px/18px BreeLight,Arial,Helvetica,sans-serif;
+}
+.add-listing-content ul li{
+	margin-bottom: 5px;
+}
+.add-listing-content h1{
+	margin-bottom: 10px;
+}
+.add-listing-content h2,
+.confirm-listing-form h2{
+	color: #A64942;
+}
+
+.add-listing-form{
+	text-align: left;
+    width: 850px;
+    margin: 0 10% 0 10%;
+}
+
+.add-listing-form p{
+	font: 14px BreeRegular,Arial,Helvetica,sans-serif;
+	margin-top:0;
+}
+.add-listing-form h2{
+	color: #A64942;
+}
+.add-listing-form table{
+	margin-bottom: 20px;
+}
+
+.add-listing-form table#specialtyProcedures{
+	margin-left: -100px;	
+}
+
+.add-listing-form table tr td:first-child,
+.add-listing-form table tr td:nth-child(3){
+	width: 170px;
+	padding: 0 0 4px;
+	font: 13px Arial,Helvetica,sans-serif;
+	text-align:right;
+}
+.add-listing-form .stretch-input{width:185px;}
+.add-listing-form .stretch-input input{width:177px;}
+.add-listing-form select{
+	width:240px;
+}
+
+.add-listing-form .description{
+	width: 60%;
+}
+
+.add-listing-testimonial{	
+	font: 16px/18px BreeLight,Arial,Helvetica,sans-serif;
+	padding: 20px;
+}
+.confirm-listing-form{
+	font: 14px BreeRegular,Arial,Helvetica,sans-serif;
+}
+.confirm-listing-form th{
+	font: 18px/22px BreeBold,Arial,Helvetica,sans-serif;
+	color: #A64942;
+}
+.confirm-listing-form table{
+	margin-top: 20px;
+}
+.confirm-listing-form table.ps-offer-table{
+	margin-bottom: 20px;
+}
+.confirm-listing-form table.ps-offer-table td{
+	text-align:left;
+}
+.confirm-listing-form table.ps-offer-table th{
+	text-align:left;
+	width: 165px;
+}
+.confirm-listing-form table.ps-offer-table tbody td{
+	vertical-align: top;
+	width: 250px;
+}
+.confirm-listing-form table.check-table{
+	margin-top: 0px;	
+}
+.confirm-listing-form table.check-table td:first-child{
+	vertical-align: top;
+	padding-top: 4px;
+}
+.confirm-listing-form table.check-table h2{
+	float:left;
+	margin: 0 5px 0 0;
+}
+.confirm-listing-form table.check-table p{
+	margin-top: 3px;
+	line-height: 19px;
+}
+.selectArea .center{
+	height:20px;
+	padding-top:4px;
+	font: 12px/14px Arial,Helvetica,sans-serif!important;
+	color:#000000;
+}
+.optionsDivVisible ul a{
+	font: 12px/14px Arial,Helvetica,sans-serif!important;
+	color:#000000;
+}
+.thank-you-form{
+	font: 16px/18px BreeRegular,Arial,Helvetica,sans-serif;
+}
+.invalid-input,
+.invalid-input h5,
+.invalid-input input,
+.invalid-input span,
+.invalid-input td{
+	color:#FF0000!important;
+}
+.btn-center{
+	width:100%;
+	text-align:center;
+}
+
+#addlisting-payment-form{
+	width: 402px;
+}
+
+.addlisting-payment-form-row {
+    clear: both;
+    display: inline-block;
+}
+
+.addlisting-payment-form-cellL {
+  float: left;
+    width: 170px;
+  padding: 0 10px 4px;
+  font: 13px Arial,Helvetica,sans-serif;
+  text-align: right;
+}
+
+.addlisting-payment-form-cellR {
+ 
+  height: 25px;
+    background: transparent;
+  border: 0;
+  /*position: absolute;*/
+  font: 14px/17px BreeOblique, Arial, Helvetica, sans-serif;
+  color: #7f7f7f;
+    padding: 0;
+  /*margin-top: -1px;
+  margin-left: -1px;*/
+  
+    position: relative;
+  float: left;
+  background: white;
+  border: 2px solid #96B8B7;
+  -webkit-border-radius: 6px;
+  -moz-border-radius: 6px;
+  border-radius: 6px;
+  width: 197px;
+}
+
+.addlisting-payment-form-cellR input, .addlisting-payment-form-cellR select{
+  border: none;
+  width: 187px;
+  -webkit-appearance: button;
+  height: 25px;
+  position: absolute;
+  background: transparent;
+  padding: 0px 5px;
+}
+
+.addlisting-payment-form-cellR.styled-select {
+	  background: #ffffff url(/images/layout/arrow-select.png) no-repeat right center;
+}
+
+#addlisting-billing-information{
+  margin: 20px 10px 10px 20px;
+  width: 600px;
+}
+
+
+#ccTermsAndConditions{
+	color: #0e7496;
+	text-decoration: underline;
+}
+
+#ccTermsAndConditions:hover{
+	cursor: pointer;
+}
+
+#termsAndConditionsDialog{
+	display: none;	
+}
+
+div.more-features-content{
+	padding-top:0px;
+}
+.table-check{
+	display:inline-block;
+	background:url(/images/doctors_only/checkmark.png) no-repeat;
+	width:29px;
+	height:28px;
+	margin: -10px 0 0;
+}
+table.more-features{
+	width:100%;
+	border-spacing: 0;
+	margin: 0 0 10px;
+}
+table.more-features thead{
+	font: 14px/16px BreeBold,Arial,Helvetica,sans-serif;
+	color: #A64942;
+}
+table.more-features thead th{
+	/*padding: 0 10px 20px;*/
+}
+table.more-features thead th:first-child{
+	text-align:left;
+}
+table.more-features tbody{
+	font: 16px/18px BreeRegular,Arial,Helvetica,sans-serif;
+}
+table.more-features tbody tr{
+	height: 18px;
+	overflow: visible;
+}
+table.more-features tr.odd-row{
+	background-color: #C7D8D8;
+}
+table.more-features tr td{
+	text-align: center;
+	color: #A64942;
+	height: 18px;
+	overflow: visible;
+}
+table.more-features tr td:first-child{
+	text-align: left;
+	color: #6C6C6C;
+}
+
+div#validation-client{
+    background-color: mistyrose;
+    display: none;
+    padding: 5px;
+	margin-bottom: 15px;
+}

@@ -1,0 +1,25 @@
+.hiddenCategory
+{
+	display: none;	
+}
+
+.LikeALink
+{
+	text-decoration: underline;
+	cursor: pointer;
+	color: #0e7496;
+	font-size: smaller;	
+}
+
+.LikeALink:hover
+{
+	text-decoration: none;	
+}
+
+
+.procedure-list
+{
+	padding-left: 20px; 
+	margin-top: 0px; 
+	margin-bottom: 20px;	
+}

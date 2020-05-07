@@ -1,0 +1,118 @@
+.SiteMapindex
+{
+padding: 10px;
+}
+
+.SiteMapModule
+{
+border-right:1px solid black;
+padding: 0px;
+}
+
+.SiteMapModuleRight
+{
+padding: 0px;
+}
+
+.SiteMapModuleLeft
+{
+border-right:1px solid black;
+padding: 0px;
+}
+
+.SiteMapSurgeryGuides
+{
+font-size: 12px;
+padding-left: 10px;
+padding-top: 10px;
+padding-bottom: 0px;
+}
+.SiteMapSurgeryGuidesHeader
+{
+font-weight: bold;
+font-size: 14px;
+border-top:1px solid black;
+padding-left: 10px;
+padding-top: 10px;
+}
+
+
+.SiteMapSurgerySpecialtiesList
+{
+font-size: 12px;
+padding-top: 10px;
+padding-left: 10px;
+padding-right: 10px;
+padding-bottom: 10px;
+}
+.SiteMapSurgerySpecialtiesHeader
+{
+font-weight: bold;
+font-size: 14px;
+padding-left: 10px;
+padding-right: 10px;
+}
+
+.SiteMapSurgeryStateList a
+{
+font-size: 12px;
+padding-left: 10px;
+}
+.SiteMapSurgeryStateHeader
+{
+font-weight: bold;
+font-size: 14px;
+padding-left: 10px;
+}
+
+.SiteMapPatientResources
+{
+font-size: 12px;
+padding-left: 10px;
+padding-top: 10px;
+padding-bottom: 0px;
+}
+.SiteMapPatientResourcesHeader
+{
+font-weight: bold;
+font-size: 14px;
+border-top:1px solid black;
+padding-left: 10px;
+padding-top: 10px;
+}
+
+.FindADoctorCountryHeader
+{
+padding-left: 5px; 
+font-size: 12px;
+font-weight: bold;
+}
+
+.FindADoctor
+{
+padding-right: 10px;
+}
+
+.FindADoctorCountry
+{
+padding-top: 0px
+padding-bottom: 15px
+}
+
+
+.SiteMapSiteNavigation
+{
+font-size: 12px;
+padding-left: 10px;
+padding-top: 10px;
+padding-bottom: 10px;
+}
+
+.SiteMapSiteNavigationHeader
+{
+font-weight: bold;
+font-size: 14px;
+border-top:1px solid black;
+padding-left: 10px;
+padding-top: 10px;
+}

@@ -1,0 +1,23 @@
+/* Questions & Answers */
+
+.QNATitle
+	{
+	font-weight:bold;
+	float:left;
+	}
+.QNAContent
+ 	{
+	margin-left:6em;
+	margin-bottom:5px;
+	}
+.QNADoctor
+	{
+	font-size:.9em;
+	text-align:right;
+	}
+	
+.ArchiveQA
+{
+	margin: 18px 0 5px!important; 
+	font: 16px/0px BreeBold, Arial, Helvetica, sans-serif;
+}

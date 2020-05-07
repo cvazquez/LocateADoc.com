@@ -1,0 +1,31 @@
+div.coupon-dialog{
+	background:none;
+	border:none;
+	margin:0px;
+	padding:0px;
+	overflow:hidden;
+}
+
+.coupon-dialog .ui-dialog-titlebar{
+	display:none;
+}
+.coupon-dialog .coupon-modal{
+	overflow:hidden;
+}
+table.coupon-box{
+	width:300px;
+}
+.coupon-dialog .btn-search{
+    background: url("/images/coupon/print.png") no-repeat scroll 0 0 transparent;
+    border: 0 none;
+    color: #FFFFFF;
+    cursor: pointer;
+    display: block;
+    font: 12px/30px BreeBold,Arial,Helvetica,sans-serif;
+    height: 30px;
+    margin: 0;
+    padding: 0 0 2px;
+    text-align: center;
+    text-decoration: none;
+    width: 118px;
+}

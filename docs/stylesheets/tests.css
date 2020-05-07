@@ -1,0 +1,33 @@
+h1{
+	padding-left: 75px;
+	color: white;
+}
+.testtable{
+	width:920px;
+	font-size:16px;
+	background-color:#FFDDAA;
+	border:1px solid black;
+	margin:20px;
+	border-spacing: 0px;	
+}
+.testtable .casecolumn{
+	width:400px;
+}
+.testtable .notecolumn{
+	width:500px;
+}
+.testtable th{
+	font-size:20px;
+	margin:0px;
+	padding:5px;
+	background-color:#FFCC99;
+}
+.testtable td{
+	margin:0px;
+	padding:5px;
+	border-top: 1px solid #FFEEBB;
+	border-bottom: 1px solid #FFCC99;
+}
+.testtable td a{
+	font-size:20px;
+}

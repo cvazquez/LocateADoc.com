@@ -1,0 +1,136 @@
+<cfparam name="params.firstname" default="">
+<cfparam name="params.lastname" default="">
+<cfparam name="params.name" default="">
+<cfparam name="params.email" default="">
+<cfparam name="params.zip" default="">
+<cfparam name="params.phone" default="">
+
+<!--- Load user info --->
+<cfif Request.oUser.saveMyInfo eq 1>
+	<cfset params = Request.oUser.appendUserInfo(params)>
+	<cfif params.firstname neq "" and params.lastname neq "">
+		<cfset params.name = "#params.firstname# #params.lastname#">
+	</cfif>
+</cfif>
+
+<cfsavecontent variable="additionalJS">
+	<cfoutput>
+		<script type="text/javascript">
+			$(function(){
+				<cfif params.zip eq "">
+					// Get phone's location
+					if(navigator.geolocation)
+					{
+						navigator.geolocation.getCurrentPosition(function(position)
+						{
+							var lat = position.coords.latitude;
+							var lon = position.coords.longitude;
+							$.post("http://#CGI.SERVER_NAME#/api/coordinates2location?lat=" + lat + "&lon=" + lon + "&format=json",{},function(response) {
+								$("[name$='zip']").val(response.POSTALCODE).removeClass('input-default');
+							});
+						});
+					}
+				</cfif>
+
+				// Autocomplete
+				procedureSpecialtyArray = [];
+				$(".procedure-selections option").each(function(){
+					procedureSpecialtyArray.push({label:$(this).html(),value:$(this).attr('value')});
+				});
+				var _SWspecialtyprocedure = $("##specialty");
+				var _SWspecialtyid = $("##specialtyid");
+				var _SWprocedureid = $("##procedureid");
+				_SWspecialtyprocedure.autocomplete({
+					source: procedureSpecialtyArray,
+					select: function(event, ui){
+						_SWspecialtyprocedure.val(ui.item.label);
+						if(ui.item.value.split('-')[0] == 'specialty')
+							{
+							_SWspecialtyid.val(ui.item.value.split('-')[1]);
+							_SWprocedureid.val('');
+							}
+						else
+							{
+							_SWspecialtyid.val('');
+							_SWprocedureid.val(ui.item.value.split('-')[1]);
+							}
+						return false;
+					},
+					focus: function(event, ui){
+						_SWspecialtyprocedure.val(ui.item.label);
+						return false;
+					},
+					change: function(event, ui){
+						var _selection = $(".procedure-selections option[label='"+_SWspecialtyprocedure.val().toUpperCase()+"']");
+						if(_selection.length != 0){
+							_SWspecialtyprocedure.val(_selection.html());
+						}
+					}
+				});
+				$("##site-wide-mini input.PreText").addClass('input-default');
+				$("##site-wide-mini input").attr("onfocus","$(this).removeClass('input-error');if(this.value==this.defaultValue && !$(this).hasClass('noPreText')){this.value='';$(this).removeClass('input-default');}");
+				$("##site-wide-mini input").attr("onblur","if($.trim(this.value)==''){this.value=this.defaultValue;if(!$(this).hasClass('noPreText')) $(this).addClass('input-default');}");
+			})
+			function validate()
+			{
+				var error = false;
+				$("##site-wide-mini input").each(function(index) {
+					if ($(this).attr("required") && ($(this).val() == '' || ($(this).val() == $(this)[0].defaultValue && !$(this).hasClass('noPreText'))))
+						{
+						$(this).addClass("input-error");
+						error = true;
+						}
+					})
+				if($("##site-wide-mini ##name").val().split(' ').length < 2)
+						{
+						$("##site-wide-mini ##name").addClass("input-error");
+						error = true;
+						}
+				if(!error)
+					$("##site-wide-mini").submit();
+			}
+		</script>
+	</cfoutput>
+</cfsavecontent>
+
+<cfoutput>
+	<div id="page2" class="centered">
+		<img src="/images/mobile/find_your_doctor.png">
+		<div id="bottom-content-wrapper">
+			<div id="bottom-content">
+				<img src="/images/mobile/start-your-search.png" class="search-title">
+				<form action="/mobile/page2?t=#Client.mobile_entry_page#" method="post" id="site-wide-mini">
+					<input	type="hidden"	name="isFolioMini"	value="0">
+					<input	type="hidden"	name="position"		value="11">
+					<input	type="hidden"	name="sourceId"		value="56">
+					<input	type="hidden"	name="specialty"	value=""	id="specialtyid">
+					<input	type="hidden"	name="procedure"	value=""	id="procedureid">
+					<input	type="hidden"	name="comments"		value=""	id="comments">
+					<p class="input-wrapper">
+						<input	type="text" name="specialtyprocedure" value="Specialty or Procedure" class="PreText" required="yes" id="specialty">
+					</p>
+					<p class="input-wrapper">
+						<input	type="name" name="name" value="#params.name neq "" ? params.name : "Patient Name"#" class="#params.name neq "" ? "no" : ""#PreText" required="yes" id="name">
+					</p>
+					<p class="input-wrapper">
+						<input	type="email" name="email" value="#params.email neq "" ? params.email : "Email Address"#" class="#params.email neq "" ? "no" : ""#PreText" required="yes">
+					</p>
+					<p class="input-wrapper">
+						<input	type="text" name="zip" value="#params.zip neq "" ? params.zip : "Zip Code"#" class="#params.zip neq "" ? "no" : ""#PreText" required="yes">
+					</p>
+					<p class="input-wrapper">
+						<input	type="phone" name="phone" value="#params.phone neq "" ? params.phone : "Daytime Phone"#" class="#params.phone neq "" ? "no" : ""#PreText" required="yes">
+					</p>
+					#Request.oUser.getCheckBox(label="Save my information", inputClass="saveMyInfo", inputStyle="float:left;")#
+					<input type="submit" style="margin-left: -9999px; float:left;">
+					<a href="##" class="button" onclick="validate(); return false;">Search</a>
+					<select class="procedure-selections hidden">
+						<cfloop query="ProceduresAndSpecialties">
+							<option label="#REReplace(UCase(ProceduresAndSpecialties.name),'[ ][ ]+',' ','all')#" value="#ProceduresAndSpecialties.type#-#ProceduresAndSpecialties.id#">#REReplace(ProceduresAndSpecialties.name,'[ ][ ]+',' ','all')#</option>
+						</cfloop>
+					</select>
+				</form>
+			</div>
+		</div>
+	</div>
+</cfoutput>

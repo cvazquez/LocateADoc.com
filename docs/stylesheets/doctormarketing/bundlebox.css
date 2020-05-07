@@ -1,0 +1,137 @@
+div.bundlepopup{
+	/*position:fixed;
+	top:200px;
+	left:40%;	
+	z-index:20;
+	height:200px;*/
+	/*height: 163px;
+	left: 520px;
+	position: absolute;*/
+}
+table.fadebox{
+	margin:0;
+	padding:0;
+	border:0px;
+	border-spacing:0;
+	border-collapse:collapse;
+	height: 163px; /* new */
+}
+table.fadebox tr,
+table.fadebox td{
+	margin:0;
+	padding:0;
+}
+table.fadebox td.corner{
+	/*background:url(/images/doctors_only/bundlebox/fadebox10-corner.png) no-repeat top left;*/
+	width:30px;
+	height:30px;
+}
+table.fadebox td.top{
+	/*background:url(/images/doctors_only/bundlebox/fadebox10-top.png) no-repeat top right;*/
+	height:30px;
+}
+table.fadebox td.left{
+	/*background:url(/images/doctors_only/bundlebox/fadebox10-left.png) no-repeat bottom left;*/
+	width:30px;
+}
+table.fadebox td.body{
+	/*background:url(/images/doctors_only/bundlebox/fadebox10-body.png) no-repeat bottom right;*/
+	width:380px;
+	height:163px;
+}
+div.bundle-popup-frame{
+	background:url(/images/doctors_only/bundlebox/pdbundlebox-gradient.jpg) repeat-y top center;
+	border-radius:10px;
+	-moz-border-radius: 10px;
+	-webkit-border-radius: 10px;
+	padding:10px;
+	position:relative;
+	top:-183px;
+	left:10px;
+	width:370px;
+	height:153px;
+	overflow:hidden;
+}
+div.bundle-popup-frame h3{
+	font:bold 22px/24px Arial, Helvetica, sans-serif;
+	color:#0a63b3;
+	display:inline-block;
+	float:left;
+	margin:0 0 10px;
+}
+div.bundle-popup-frame div.bundle-popup-close-button{
+	background:url(/images/doctors_only/bundlebox/closebutton.png) no-repeat top left;
+	display:inline-block;
+	float:right;
+	margin:0;
+	padding:0;
+	width:29px;
+	height:28px;
+	cursor:pointer;
+}
+div.bundle-popup-frame div.bundle-popup-close-button:hover{
+	background-position: -30px 0px;
+}
+div.bundle-popup-frame div.bundle-popup-close-button:active{
+	background-position: -60px 0px;
+}
+div.bundle-popup-body{
+	background:#FFFFFF url(/images/doctors_only/bundlebox/operator80_120.jpg) no-repeat bottom left;
+	border-radius:10px;
+	-moz-border-radius: 10px;
+	-webkit-border-radius: 10px;
+	display:block;
+	padding:0;
+	clear:left;
+	height:121px;
+	width:370px;
+	overflow:hidden;
+}
+div.bundle-popup-body p.question{
+	font:bold 13px/20px Arial, Helvetica, sans-serif;
+	color:#6D6E71;
+	margin:0px;
+	padding:5px 0 0 80px;
+}
+div.bundlepopup p.bundle-number{
+	font:bold 24px/24px Arial, Helvetica, sans-serif;
+	color:#0a63b3;
+	margin:0px;
+	position:relative;
+	top:-223px;
+	left:118px;
+}
+div.bundle-popup-body p.schedule{
+	font:12px/14px Arial, Helvetica, sans-serif;
+	color:#6D6E71;
+	margin:0px;
+	padding:44px 0 0 80px;
+}
+
+div.bundlepopup-small{
+	top: 10px;
+	left: 58%;
+	height: 60px;
+}
+div.bundlepopup-small div.bundle-popup-body,
+div.bundlepopup-small div.bundle-popup-close-button,
+div.bundlepopup-small div.bundle-popup-frame h3{
+	display:none;
+}
+div.bundlepopup-small .fadebox .top,
+div.bundlepopup-small .fadebox .body{
+	width: 170px;
+	height: 30px;
+}
+div.bundlepopup-small .bundle-popup-frame{
+	width: 165px;
+	height: 25px;
+	top: -53px;
+	left: 7px;
+}
+div.bundlepopup-small p.bundle-number{
+	top: -87px;
+	left: 20px;
+	font-size: 15px;
+}
+

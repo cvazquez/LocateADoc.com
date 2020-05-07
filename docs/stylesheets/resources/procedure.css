@@ -1,0 +1,54 @@
+table.review{
+	background:url("/images/layout/bg-widget-ttl.gif") no-repeat scroll 50% 100% transparent;
+	width:409px;
+	margin-bottom:15px;
+}
+table.review p{
+	margin:0;
+}
+table.review h3{
+	font: 14px/18px BreeBold,Arial,Helvetica,sans-serif;
+	color:#577B77;
+	/*line-height:18px;*/
+	margin:0;
+}
+table.review p.review-practice-name{
+	font: 14px BreeBold,Arial,Helvetica,sans-serif;
+	color:#6C6C6C;
+	/*font-size:15px;*/
+}
+table.review .rating-cell{
+	width:80px;
+	vertical-align:top;
+}
+.star-rating{
+	background:url(/images/layout/star_empty.jpg) repeat-x;
+	display:inline-block;
+	height:16px;
+	width:80px;
+	padding:0px;
+}
+.star-rating div{
+	background:url(/images/layout/star_full.jpg) repeat-x;
+	display:block;
+	height:16px;
+	margin:0px;
+	padding:0px;
+}
+table.review .review-doctor{
+	vertical-align:top;
+	padding-bottom:15px;
+}
+table.review .review-content,
+table.review .review-details{
+	font: 12px/15px Arial,Helvetica,sans-serif;
+}
+table.review .review-content p{
+	margin:20px 0 10px;
+}
+table.review .review-details{
+	padding-bottom:15px;
+}
+table.review .review-details p{
+	text-align:right;
+}

@@ -1,0 +1,55 @@
+.facebook-specified{
+	border-color: #5F78AB!important;
+	background-color: #E2ECFF!important;
+}
+.facebook-specified input,
+.facebook-specified select{
+	color: #0F285B!important;
+}
+p.login-heading{
+	color: #A64942;
+	font: 24px/28px BreeRegular,Arial,Helvetica,sans-serif;
+	text-align:center;
+	margin-top:0;
+}
+p.login-sub{
+	font-style: italic;
+	font-size: 11px;
+}
+.sign-in-field{
+	position:absolute; 
+	top:45px; 
+	left:50%; 
+	padding-left:400px; 
+	width:76px; 
+	height:22px; 
+	overflow:hidden;
+	z-index:5;
+}
+.user-link{
+	color: #666666;
+	font: 14px/16px BreeLight,Arial,Helvetica,sans-serif;
+	display:inline-block; 
+	cursor:pointer;
+	margin-top:5px;
+}
+.user-link:hover{text-decoration:underline;}
+.fb-photo-small{
+	vertical-align:middle;
+	width:30px;
+	height:30px;
+	margin-right:5px;
+}
+.welcome-brace{
+	width: 1px; 
+	height: 30px; 
+	display: inline; 
+	vertical-align: middle;
+}
+.facebook-sign-in{
+	display:inline-block;
+	width:192px;
+	height:34px;
+	background:url(/images/layout/facebook-sign-in.png) no-repeat 0 0;
+	cursor:pointer;
+}

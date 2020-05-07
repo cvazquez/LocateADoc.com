@@ -1,0 +1,664 @@
+<cfcomponent extends="Controller" output="false">
+	
+ 	<cffunction name="init">
+		<cfset filters(through="recordHit",type="after")>
+	</cffunction>
+	
+	<cffunction name="index">
+		<cfset title = "Doctors - LocateADoc.com">			
+		<cfset Procedures = getProcedures(false)>>
+		<cfset ProcedureAlphas = getProcedures(true)>
+		<cfset Specialties = getSpecialties()>		
+		<cfset tickBegin = GetTickCount()>
+		<cfset States = model("State").findAll(
+			select="states.name,states.abbreviation,LEFT(states.name,1) AS letter",
+			include="stateCities(city(accountLocations(accountDoctorLocations(accountProductsPurchasedDoctorLocations(accountProductsPurchased)))))",
+			where="countryid = 102 AND accountproductspurchased.accountProductId = 1",
+			group="states.name,states.abbreviation",
+			order="name asc"
+		)>
+		<cfquery name="StateAlphas" dbtype="query">
+			SELECT letter FROM States GROUP BY letter ORDER BY name asc;
+		</cfquery>
+
+		<cfset initialCities = getCities("Alabama")>
+		<cfset tickEnd = GetTickCount()>
+		<cfset tickTime = tickEnd - tickBegin>
+		<cfset flashInsert(alert="#tickTime#")>
+		
+		<cfset featuredListings = getFeaturedListings(includeSpecialties=true)>
+		
+		<cfset bodyParts = model("BodyRegion").findAll(
+			select  = "bodyregions.id AS bodyRegionId,bodyregions.name AS bodyRegionName,
+					   bodyparts.id AS bodyPartId,bodyparts.name AS bodyPartName,
+					   xCoordinate, yCoordinate",
+			include	= "bodyParts",
+			order	= "bodyregions.name asc, bodyparts.name asc"
+		)>
+
+		<cfsavecontent variable="pageTitle">
+			<cfoutput>
+				<h2>find <span>your</span> doctor</h2>
+			</cfoutput>
+		</cfsavecontent>
+		<cfset breadcrumbs = initBreadcrumbs()>
+	</cffunction>
+	
+	<cffunction name="search">
+		<cfparam name="params.originalFilter" default="http://#cgi.server_name & cgi.path_info#">
+		<cfset search = getSearchResults()>
+
+		<cfsavecontent variable="dump">
+			<cfoutput><cfdump var="#params#"></cfoutput>
+		</cfsavecontent>
+
+		<cfset breadcrumbs = initBreadcrumbs()>
+	</cffunction>
+	
+	<cffunction name="cities">
+		<cfsetting showdebugoutput="false">
+		<cfset provides("html,json")>
+		<cfparam name="params.stateName" default="Alabama">
+		
+		<!--- Filter the state --->
+		<cfif REFind("[^A-Za-z ]",params.stateName) gt 0><cfset params.stateName = "Alabama"></cfif>
+		
+		<cfset results = {}>
+		<cfset results["content"] = getCities(params.stateName)>		
+		<cfset renderWith(results)>
+	</cffunction>
+	
+	<cffunction name="location">
+		<cfsetting showdebugoutput="false">
+		<cfset provides("html,json")>
+		<cfparam name="params.term" default="">
+		<cfparam name="params.country" default="US">
+		<cfparam name="params.callback" default="">
+		
+		<cfset results = {}>
+		<cfset results.tick = GetTickCount()>
+		
+		<!--- Filter the term --->
+		<cfset params.term = REReplace(params.term,"[^A-Za-z\.\' ]","","all")>
+		
+		<cfset cities = model("City").findAll(
+		 	select="cities.name, states.abbreviation",
+			include="stateCity(state(country)),accountLocations",
+			where="cities.name LIKE '#params.term#%' AND countries.abbreviation = '#params.country#'",
+			group="cities.name, states.abbreviation",
+			order="cities.name asc",
+			maxRows="5")>
+				
+		<cfset results.content = ArrayNew(1)>
+		<cfloop query="cities">
+			<cfset ArrayAppend(results.content,"#cities.name#, #cities.abbreviation#")>
+		</cfloop>
+		<cfset renderText("#params.callback#(#SerializeJSON(results)#)")>
+	</cffunction>
+		
+	<cffunction name="featuredCarousel">
+		<!--- This will be invoked by other controllers to include the featured carousel in other sections --->		
+		<cfargument name="limit" type="numeric"	required="false" default="30">
+		
+		<cfreturn getFeaturedListings(limit=arguments.limit)>
+	</cffunction>
+	
+	<cffunction name="UpdateGeodata">
+		<cfsetting showdebugoutput="false">
+		<cfparam name="params.lat" default="">
+		<cfparam name="params.lon" default="">
+		<cfparam name="params.id" default="">
+		
+		<cfset model("AccountLocation").UpdateGeodata(
+			lat = params.lat,
+			lon = params.lon,
+			id = params.id
+		)>
+		
+		<cfset renderNothing()>
+	</cffunction>
+	
+	<!--- Private functions --->
+	
+	<cffunction name="initBreadcrumbs" access="private" returntype="array">
+		<cfset breadcrumbs = []>
+		<cfset arrayAppend(breadcrumbs,linkTo(controller="home",text="Home"))>
+		<cfset arrayAppend(breadcrumbs,"Doctors")>
+		<cfreturn breadcrumbs>
+	</cffunction>
+	
+	<cffunction name="getProcedures" access="private">
+	 <cfargument name="alphasOnly" type="boolean" required="false" default="false">
+	 <cfargument name="letter" type="string" required="false" default="">
+		<cfif alphasOnly>			
+			<cfset Local.procedures = model("Procedure").findAll(
+				select="distinct left(name,1) as letter",
+				where="lettercompare >= 0",
+				order="name asc"
+			)>			
+		<cfelse>
+			
+			<cfset Local.procedures = model("Procedure").findAll(
+				select="procedures.id, procedures.name",
+				where="#Iif(letter neq '',DE('left(procedures.name,1) = "' & letter & '"'),DE(''))#",
+				order="name asc"
+			)>
+		</cfif>
+		<cfreturn Local.procedures>
+	</cffunction>
+	
+	<cffunction name="getSpecialties" access="private">
+	 <cfargument name="alphasOnly" type="boolean" required="false" default="false">
+		<cfif alphasOnly>
+			<cfset Local.specialties = model("Specialty").findAll(
+				select="distinct left(name,1) as letter",
+				where="lettercompare >= 0 AND categoryId = 1",
+				order="name asc"
+			)>		
+		<cfelse>
+			<cfset Local.specialties = model("Specialty").findAll(
+				select="specialties.id, specialties.name",
+				where="categoryId = 1",
+				order="name asc"
+			)>
+		</cfif>
+		<cfreturn Local.specialties>
+	</cffunction>
+
+	<cffunction name="getCities" access="private">
+		<cfargument name="statename" type="string" required="true">
+		<cfargument name="twocolumns" type="boolean" required="false" default="false">
+		<cfset cities = model("State").findAll(
+		 	select="cities.id, cities.name, states.id as stateid",
+			include="stateCities(city(accountLocations(accountDoctorLocations(accountProductsPurchasedDoctorLocations(accountProductsPurchased)))))",
+			where="states.name = '#statename#' AND accountproductspurchased.accountProductId = 1",
+			group="cities.id,cities.name",
+			order="cities.name asc")>
+		<cfif twocolumns>
+			<cfset columnbreak = ceiling(cities.recordcount/2)>
+		<cfelse>
+			<cfset columnbreak = ceiling(cities.recordcount/5)>
+		</cfif>
+		<cfset result = "">
+		<cfloop query="cities">
+			<cfif ((columnbreak gt 1) and (cities.currentrow mod columnbreak) eq 1) or (cities.currentrow eq 1)>
+				<cfset result &= "<ul>">
+			</cfif>
+			<cfset result &= '<li>#linkTo(text=name, route="doctorSearch2", filter1="state-#cities.stateid#", filter2="city-#cities.id#")#</li>'>			
+			<cfif ((columnbreak gt 1) and (cities.currentrow mod columnbreak) eq 0) or (cities.currentrow eq cities.recordcount)>
+				<cfset result &= "</ul>">
+			</cfif>
+		</cfloop>
+		<cfreturn result>
+	</cffunction>
+
+	<cffunction name="sponsoredlink" returntype="struct" access="private">
+		<cfparam name="params.specialty" default="">
+		<cfset sponsoredLink = getSponsoredLink(specialty="#val(params.specialty)#")>
+		<cfreturn sponsoredLink>
+	</cffunction>
+
+	<cffunction name="getFeaturedListings" access="private" returntype="query">
+		<cfargument name="city"					type="numeric"	required="false" default="0">
+		<cfargument name="state"				type="numeric"	required="false" default="0">
+		<cfargument name="limit"				type="numeric"	required="false" default="30">
+		<cfargument name="includeSpecialties"	type="boolean"	required="false" default="false">			
+		
+		<cfset featuredListings = model("AccountDoctorLocation").doctorSearchMultiQuery(
+			info =	"featured",
+			city =	val(arguments.city),
+			state =	val(arguments.state),
+			limit =	val(arguments.limit)
+		)>
+		
+		<!--- Add a specialty list column if we need it --->
+		<cfif arguments.includeSpecialties>
+			<cfset specialtyLists = ArrayNew(1)>
+			<cfloop query="featuredListings">
+				<cfset SpecialtyList = model("AccountLocationSpecialty").findAll(
+					select="specialties.name",
+					include="specialty",
+					where="accountDoctorLocationID = #featuredListings.ID#",
+					group="specialties.name",
+					order="specialties.name asc",
+					maxRows="5"
+				)>
+				<cfset specialtyLists[currentrow] = ValueList(SpecialtyList.name,", ")>	
+			</cfloop>
+			<cfset QueryAddColumn(featuredListings,"specialties","VarChar",specialtyLists)>
+		</cfif>
+		
+		<cfreturn featuredListings>
+	</cffunction>
+
+	<!--- Performs variable filtering and processing and returns search results --->
+	<cffunction name="getSearchResults" access="private">
+		<cfset var Local = {}>
+		
+		<!---PARAM all the search options to make sure we have them all regardless--->
+		<cfparam name="params.distance"				default="">
+		<cfparam name="params.location"				default="">
+		<cfparam name="params.state"				default="">
+		<cfparam name="params.city" 				default="">
+		<cfparam name="params.zipCode"  			default="">
+		<cfparam name="params.country"				default="">
+		<cfparam name="params.name"					default="">
+		<cfparam name="params.procedure"			default="">	
+		<cfparam name="params.specialty"			default="">
+		<cfparam name="params.bodypart"				default="">			
+		<cfparam name="params.sortby"				default="lastName ASC">
+		<cfparam name="params.page"					default="1">
+		<cfparam name="params.perpage"				default="10">
+		
+		<cfparam name="params.gender"				default="">	
+		<cfparam name="params.age"					default="">	
+		<cfparam name="params.language"				default="">	
+		<cfparam name="params.officeHours"			default="">	
+
+		<!---Search the URL for filter params and reformat them for the search--->
+		<cfloop collection="#params#" item="i">
+			<cfif left(i,6) is "filter">
+				<cfset Local.filtername = listFirst(params[i],"-")>
+				<cfset Local.filtervalue = Replace(params[i],"#Local.filtername#-","")>
+				<cfset params[Local.filtername] = Local.filtervalue>
+			</cfif>
+		</cfloop>
+		
+		<!--- Filtering the params --->
+		<cfif REFind("[^0-9]",params.distance) gt 0>
+			<cfset params.distance = 0>
+		</cfif>
+		<cfif ListFind("US,CA,MX",params.country) eq 0>
+			<cfset params.country = "">
+		</cfif>
+		<cfset CountryCheck = model("Country").findAll(
+			select="id",
+			where="abbreviation = '#params.country#'"
+		)>
+		<cfif CountryCheck.recordcount gt 0>
+			<cfset countryID = CountryCheck.id>
+		<cfelse>
+			<cfset countryID = 0>
+		</cfif>
+		<cfif REFind("[^A-Za-z-',\. ]",params.name) gt 0>
+			<cfset params.name = "">
+		</cfif>
+		<cfif REFind("[^0-9]",params.procedure) gt 0>
+			<cfset params.procedure = 0>
+		</cfif>
+		<cfif REFind("[^0-9]",params.specialty) gt 0>
+			<cfset params.specialty = 0>
+		</cfif>
+		<cfif REFind("[^0-9]",params.bodypart) gt 0>
+			<cfset params.bodypart = 0>
+		</cfif>
+		<cfif REFind("^[a-zA-Z]+ (ASC|DESC)$",params.sortby) eq 0>
+			<cfset params.sortby = "lastName ASC">
+		</cfif>
+		<cfif (REFind("[^0-9]",params.page) gt 0) or (params.page lt 1)>
+			<cfset params.page = 1>
+		</cfif>
+		<cfif (REFind("[^0-9]",params.perpage) gt 0) or (params.perpage lt 1)>
+			<cfset params.perpage = 10>
+		</cfif>
+		<cfif REFind("[^MF]",params.gender) gt 0>
+			<cfset params.gender = "">
+		</cfif>
+		<cfset latitude = 0>
+		<cfset longitude = 0>
+		<cfif params.city eq "" and params.state eq "" and params.zipCode eq "">
+			<cfif params.location neq "">
+				<!--- If a location string is specified, parse it --->
+				<cfset location = ParseLocation(params.location)>
+				<cfif location.cityFound>
+					<cfset params.city = location.city>
+				</cfif>
+				<cfif location.stateFound>
+					<cfset params.state = location.state>
+				</cfif>
+				<cfif location.zipFound>
+					<cfset params.zipCode = location.zipCode>
+					<cfset latitude = location.latitude>
+					<cfset longitude = location.longitude>
+				</cfif>
+			</cfif>			
+		</cfif>
+		<!--- If no criteria is specified, take the user to the search form --->
+		<cfif params.name eq "" and params.procedure eq "" and params.specialty eq "" and params.bodypart eq ""
+			and params.city eq "" and params.state eq "" and params.zipCode eq "">			
+			<cfset redirectTo(action="index")>
+		</cfif>
+		
+		<cfset Local.search = getDoctorSearch(
+			procedureId =			val(params.procedure),
+			specialtyId =			val(params.specialty),
+			country =				countryID,
+			distance =				val(params.distance),
+			latitude = 				latitude,
+			longitude = 			longitude,
+			zipCode =				params.zipCode,
+			city =					val(params.city),
+			state =					val(params.state),
+			doctorName =			params.name,
+			bodyPartId =			val(params.bodypart),
+			gender =				params.gender,
+			sortBy =				params.sortby,
+			page =					val(params.page),
+			perpage =				val(params.perpage)
+		)>
+		
+		<cfreturn Local.search>	
+	</cffunction>
+		
+	<!--- Builds the search return structure --->
+	<cffunction name="getDoctorSearch" access="private" returntype="struct">
+		<cfargument name="procedureId"			type="numeric"	required="false" default="0">
+		<cfargument name="specialtyId"			type="numeric"	required="false" default="0">
+		<cfargument name="country"				type="numeric"	required="false" default="0">
+		<cfargument name="distance"				type="numeric"	required="false" default="0">
+		<cfargument name="latitude"				type="numeric"	required="false" default="0">
+		<cfargument name="longitude"			type="numeric"	required="false" default="0">
+		<cfargument name="zipCode"				type="string"	required="false" default="">
+		<cfargument name="city"					type="numeric"	required="false" default="0">
+		<cfargument name="state"				type="numeric"	required="false" default="0">
+		<cfargument name="doctorName"			type="string"	required="false" default="">		
+		<cfargument name="bodypartId"			type="numeric"	required="false" default="0">
+		<cfargument name="gender"				type="string"	required="false" default="">
+		<cfargument name="sortBy"				type="string"	required="false" default="lastName ASC">
+		<cfargument name="page"					type="numeric"	required="false" default="1">
+		<cfargument name="perpage"				type="numeric"	required="false" default="10">
+		
+		<cfset var local = {}>
+		<cfset local.return = {}>
+		<cfset local.return.page = arguments.page>
+		<cfset local.return.perpage = arguments.perpage>
+		<cfset offset = (arguments.page-1)*arguments.perpage>
+		<cfset limit = arguments.perpage>
+						
+		<!--- Perform the search query --->
+		<cfset local.return.results = model("AccountDoctorLocation").doctorSearchMultiQuery(
+			info =					"search",
+			procedureId =			val(arguments.procedureId),
+			specialtyId =			val(arguments.specialtyId),
+			country =				arguments.country,
+			distance =				val(arguments.distance),
+			latitude =				val(arguments.latitude),
+			longitude =				val(arguments.longitude),
+			zipCode =				arguments.zipCode,
+			city =					val(arguments.city),
+			state =					val(arguments.state),
+			doctorName =			arguments.doctorName,
+			bodyPartId =			val(arguments.bodypartId),
+			gender = 				arguments.gender,
+			sortBy =				arguments.sortby,
+			offset =				val(offset),
+			limit =					val(limit)
+		)>
+		
+		<!--- Get the number of records and pages from the full result set --->
+		<cfquery datasource="#get('dataSourceName')#" name="local.count">
+			Select Found_Rows() AS foundrows
+		</cfquery> 
+		<cfset local.return.totalrecords = local.count.foundrows>
+		<cfset local.return.pages = ceiling(local.return.totalrecords/local.return.perpage)>
+		
+		<!--- If user mischief results in a page value greater than the number of pages, send them back --->
+		<cfif (local.return.pages gte 1) and (local.return.page gt local.return.pages)>
+			<cfset redirectTo(back=true)>
+		</cfif>
+				
+		<cfloop query="local.return.results">
+			<!--- Append a list of specialties to each row in the query --->
+			<cfset Specialty = model("AccountLocationSpecialty").findAll(
+				select="specialties.name, specialtyId, accountdescriptions.content",
+				include="specialty,accountDescription",
+				where="accountDoctorLocationID = #local.return.results.ID#",
+				group="specialties.name",
+				order="specialties.name asc"
+			)>
+			<cfset QuerySetCell(local.return.results,"specialtyList",ValueList(Specialty.name,", "),local.return.results.currentrow)>					
+			<!--- Append a description from one of the specialties, preferably the specified specialization --->
+			<cfloop query="Specialty">
+				<cfif Specialty.content neq "" and ((Specialty.specialtyId eq arguments.specialtyId) or (local.return.results.description eq ""))>
+					<cfset QuerySetCell(local.return.results,"description",Specialty.content,local.return.results.currentrow)>
+				</cfif>
+			</cfloop>
+			<!--- Append a list of top procedures, for the specialization alone if specified --->
+			<cfset TopProcedureList = model("AccountDoctorSpecialtyTopProcedure").findAll(
+				select="name",
+				include="procedure",
+				where="accountDoctorID = #local.return.results.doctorID#" & Iif(arguments.specialtyId neq 0,DE(' AND specialtyId = #specialtyId#'),DE('')),
+				order="name asc",
+				maxRows="5"
+			)>
+			<cfset QuerySetCell(local.return.results,"topprocedures",ValueList(TopProcedureList.name,", "),local.return.results.currentrow)>					
+		</cfloop>
+		
+		<cfset local.return.filters = {}>
+		<cfset local.return.filters.index = "">
+		
+		<!---location--->
+		
+		<cfset local.return.filters.index = ListAppend(local.return.filters.index,"location")>
+		<cfif arguments.zipCode neq "">
+			<cfset local.return.filters.index = ListAppend(local.return.filters.index,"distance")>
+		</cfif>
+		
+		<!---procedures--->	
+		
+		<cfset ProcedureCounts = model("AccountDoctorLocation").doctorSearchMultiQuery(
+			info =					"procedures",
+			procedureId =			val(arguments.procedureId),
+			specialtyId =			val(arguments.specialtyId),
+			country =				arguments.country,
+			distance =				val(arguments.distance),			
+			latitude =				val(arguments.latitude),
+			longitude =				val(arguments.longitude),
+			zipCode =				arguments.zipCode,
+			city =					val(arguments.city),
+			state =					val(arguments.state),
+			doctorName =			arguments.doctorName,
+			bodyPartId =			val(arguments.bodypartId),
+			gender = 				arguments.gender
+		)>
+		<cfif ProcedureCounts.recordcount eq 0 and arguments.procedureId neq 0>
+			<cfset ProcedureCounts = model("Procedure").findAll(
+				select="name,0 as id,1 as doctorcount",
+				where="id = #arguments.procedureId#"
+			)>		
+		</cfif>
+		
+		<cfset local.return.filters.index = ListAppend(local.return.filters.index,"procedure")>
+		<cfset local.return.filters.procedure =		[]>
+		<cfloop query="ProcedureCounts">
+			<cfset ArrayAppend(local.return.filters.procedure,"#ProcedureCounts.id#|#ProcedureCounts.name#|#ProcedureCounts.doctorcount#")>
+		</cfloop>	
+		
+		<!---specialties--->
+		
+		<cfset SpecialtyCounts = model("AccountDoctorLocation").doctorSearchMultiQuery(
+			info =					"specialties",
+			procedureId =			val(arguments.procedureId),
+			specialtyId =			val(arguments.specialtyId),
+			country =				arguments.country,
+			distance =				val(arguments.distance),
+			latitude =				val(arguments.latitude),
+			longitude =				val(arguments.longitude),
+			zipCode =				arguments.zipCode,
+			city =					val(arguments.city),
+			state =					val(arguments.state),
+			doctorName =			arguments.doctorName,
+			bodyPartId =			val(arguments.bodypartId),
+			gender = 				arguments.gender
+		)>
+		<cfif SpecialtyCounts.recordcount eq 0 and arguments.specialtyId neq 0>
+			<cfset SpecialtyCounts = model("Specialty").findAll(
+				select="name,0 as id,1 as doctorcount",
+				where="id = #arguments.specialtyId#"
+			)>		
+		</cfif>
+		<cfset local.return.test = SpecialtyCounts>
+		
+		<cfset local.return.filters.index = ListAppend(local.return.filters.index,"specialty")>
+		<cfset local.return.filters.specialty =	[]>
+		<cfloop query="SpecialtyCounts">
+			<cfset ArrayAppend(local.return.filters.specialty,"#SpecialtyCounts.id#|#SpecialtyCounts.name#|#SpecialtyCounts.doctorcount#")>
+		</cfloop>	
+		
+		<!---genders--->
+		
+		<cfset GenderCounts = model("AccountDoctorLocation").doctorSearchMultiQuery(
+			info =					"gender",
+			procedureId =			val(arguments.procedureId),
+			specialtyId =			val(arguments.specialtyId),
+			country =				arguments.country,
+			distance =				val(arguments.distance),
+			latitude =				val(arguments.latitude),
+			longitude =				val(arguments.longitude),
+			zipCode =				arguments.zipCode,
+			city =					val(arguments.city),
+			state =					val(arguments.state),
+			doctorName =			arguments.doctorName,
+			bodyPartId =			val(arguments.bodypartId),
+			gender = 				arguments.gender
+		)>
+		<cfif GenderCounts.recordcount eq 0 and arguments.gender neq "">
+			<cfset QueryAddRow(GenderCounts)>
+			<cfset QuerySetCell(GenderCounts, "name","#arguments.gender#")>
+			<cfset QuerySetCell(GenderCounts, "id",0)>
+			<cfset QuerySetCell(GenderCounts, "doctorcount",1)>
+		</cfif>
+		
+		<cfset local.return.filters.index = ListAppend(local.return.filters.index,"gender")>
+		<cfset local.return.filters.gender =			[]>		
+		<cfloop query="GenderCounts">
+			<cfswitch expression="#GenderCounts.name#">
+				<cfcase value="F"><cfset genderName = "Female"></cfcase>
+				<cfcase value="M"><cfset genderName = "Male"></cfcase>
+				<cfdefaultcase><cfset genderName = ""></cfdefaultcase>
+			</cfswitch>
+			<cfif genderName neq "">
+				<cfset ArrayAppend(local.return.filters.gender,"#GenderCounts.id#|#genderName#|#GenderCounts.doctorcount#")>
+			</cfif>
+		</cfloop>		
+		
+		<!---age ranges--->
+		<!--- <cfset local.return.filters.index = ListAppend(local.return.filters.index,"age")>
+		<cfset local.return.filters.age =				[]>
+		<cfset ArrayAppend(local.return.filters.age,"0_13|13 and under|2")>
+		<cfset ArrayAppend(local.return.filters.age,"14_17|14 to 17|3")>
+		<cfset ArrayAppend(local.return.filters.age,"18_24|18 to 24|7")>
+		<cfset ArrayAppend(local.return.filters.age,"25_34|25 to 34|22")>
+		<cfset ArrayAppend(local.return.filters.age,"35_44|35 to 44|16")>
+		<cfset ArrayAppend(local.return.filters.age,"45_54|45 to 54|2")>
+		<cfset ArrayAppend(local.return.filters.age,"55_99|55 and over|1")> --->
+		<!---languages--->
+		<!--- <cfset local.return.filters.index = ListAppend(local.return.filters.index,"language")>
+		<cfset local.return.filters.language =			[]>
+		<cfset ArrayAppend(local.return.filters.language,"1|English|22")>
+		<cfset ArrayAppend(local.return.filters.language,"2|Spanish|3")>
+		<cfset ArrayAppend(local.return.filters.language,"54|Martian|1")> --->
+		<!---office hours--->
+		<!--- <cfset local.return.filters.index = ListAppend(local.return.filters.index,"officeHours")>
+		<cfset local.return.filters.officeHours =		[]>
+		<cfset ArrayAppend(local.return.filters.officeHours,"1|Morning|20")>
+		<cfset ArrayAppend(local.return.filters.officeHours,"2|Afternoon|13")>
+		<cfset ArrayAppend(local.return.filters.officeHours,"3|Night|1")> --->
+		
+		<!--- Get featured doctor list --->
+		<cfset local.return.featured = model("AccountDoctorLocation").doctorSearchMultiQuery(
+			info =					"featured",
+			procedureId =			val(arguments.procedureId),
+			specialtyId =			val(arguments.specialtyId),
+			country =				arguments.country,
+			distance =				val(arguments.distance),
+			latitude =				val(arguments.latitude),
+			longitude =				val(arguments.longitude),
+			zipCode =				arguments.zipCode,
+			city =					val(arguments.city),
+			state =					val(arguments.state),
+			doctorName =			arguments.doctorName,
+			bodyPartId =			val(arguments.bodypartId),
+			gender = 				arguments.gender,
+			limit =					0
+		)>
+
+		<!--- Get data for map view --->
+		<cfset local.return.map = model("PostalCode").getMapInfo(
+			country=arguments.country, 
+			zipCode=arguments.zipCode, 
+			city=arguments.city, 
+			state=arguments.state
+		)>
+				
+		<!--- Determine zoom level --->
+		<cfif arguments.zipCode neq ''>
+			<cfif distance gte 25>
+				<cfset local.return.zoom = 10>
+			<cfelseif distance gte 10>
+				<cfset local.return.zoom = 11>
+			<cfelseif distance gte 5>
+				<cfset local.return.zoom = 12>
+			<cfelse>
+				<cfset local.return.zoom = 13>
+			</cfif>			
+		<cfelseif arguments.city neq 0 and arguments.state neq 0>
+			<cfset local.return.zoom = 11>
+		<cfelseif arguments.state neq 0>
+			<cfset local.return.zoom = 6>
+		<cfelse>
+			<cfif arguments.country eq 12>
+				<cfset local.return.zoom = 3>
+			<cfelse>
+				<cfset local.return.zoom = 4>
+			</cfif>
+		</cfif>
+		
+		<cfreturn local.return>
+	</cffunction>
+	
+	<cffunction name="recordHit" access="private">
+		<cfparam name="params.country"				default="">
+		<cfparam name="params.state"				default="">
+		<cfparam name="params.city" 				default="">
+		<cfparam name="params.zipCode" 				default="">
+		<cfparam name="params.distance" 			default="">
+		<cfparam name="params.name" 				default="">
+		<cfparam name="params.bodypart" 			default="">	
+		<cfparam name="params.procedure"			default="">	
+		<cfparam name="params.specialty"			default="">
+		
+		<cfset keylist = REReplace(LCase(CGI.PATH_INFO),'/?(#LCase(params.controller)#|#LCase(params.action)#)/?','','all')>
+		
+		<cfif params.country neq "" and val(params.country) eq 0>
+			<cfset countryID = model("Country").findAll(select="id",where="abbreviation='#params.country#'")>
+			<cfset params.country = countryID.id>
+		</cfif>
+		<cfif not isNumeric(params.country)>
+			<cfset params.country = "">
+		</cfif>
+		
+		<cfset newHit = model("HitsDoctor").create(
+			action = params.action,
+			keyList = keylist,
+			specialtyId = params.specialty,
+			procedureId = params.procedure,
+			countryId = params.country,
+			stateId = params.state,
+			cityId = params.city,	
+			bodyPartId = params.bodypart,
+			lastName = params.name,
+			postalCode = params.zipCode,
+			distance = params.distance,
+			ipAddress = CGI.REMOTE_ADDR,
+			refererExternal = Cookie.ReferralFull,
+			refererInternal = CGI.HTTP_REFERER,
+			entryPage = Cookie.EntryPage,
+			keywords = Cookie.KEYWORDS,
+			cfId = client.CFID,
+			cfToken = client.CFTOKEN,
+			userAgent = CGI.HTTP_USER_AGENT
+		)>
+	</cffunction>
+
+</cfcomponent>

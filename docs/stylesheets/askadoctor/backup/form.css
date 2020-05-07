@@ -1,0 +1,251 @@
+#AskADocIntroShowMore
+{
+	text-decoration: underline;
+	color: blue;
+	cursor: pointer;
+}
+
+.AskADocIntro
+{
+	display: none;	
+}
+
+.custom-combobox {
+    position: relative;
+    display: inline-block;
+}
+.custom-combobox-toggle {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  margin-left: -1px;
+  padding: 0;
+  /* support: IE7 */
+  *height: 1.7em;
+  *top: 0.1em;
+}
+.custom-combobox-input {
+  margin: 0;
+  padding: 0.3em;
+}
+
+/* Next second 5 ui styles widen the specialty select box */
+ .ui-autocomplete {
+    max-height: 225px;
+    overflow-y: auto;
+    /* prevent horizontal scrollbar */
+    overflow-x: hidden;
+}
+
+.ui-widget input, .ui-widget select 
+{
+	width: 300px;
+	border: 2px solid #96B8B7;
+	-webkit-border-radius: 6px;
+	-moz-border-radius: 6px;
+}
+
+.ui-widget textarea, .ui-widget button
+{
+	width: 30px;
+	height: 33px;
+}
+
+.ui-button { margin-left: -1px; }
+.ui-button-icon-only .ui-button-text { padding: 0.35em; }
+.ui-autocomplete-input { margin: 0; padding: 0.48em 0 0.47em 0.45em; }
+
+html body ul.ui-autocomplete
+{
+	width: 325px!important;
+}
+
+.ui-menu .ui-menu-item a 
+{
+	width: 325px!important;
+}
+
+#AskADocQuestion-title
+{
+	width: 380px;
+}
+
+#AskADocQuestion-firstName, #AskADocQuestion-lastName
+{
+	width: 200px;	
+}
+
+#AskADocQuestion-email
+{
+	width: 300px;
+}
+
+#AskADocQuestion-question
+{
+	width: 376px;
+	height: 125px;
+}
+
+.TextField
+{
+	clear: both; 
+	padding-top: 15px; 
+	font-weight: bold;	
+}
+
+.ComboBox
+{
+	clear: both; 
+	padding-top: 20px; 
+	height: 6px; 
+	font-weight: bold;
+}
+
+.SubmitTag
+{
+	clear: both; 
+	padding-top: 15px;"
+}
+
+.ErrorBox { 
+  width: 400px;
+  background-color: #ECF3F2; 
+  position: relative;
+  
+  border: 2px solid #ECF3F2;
+	-webkit-border-radius: 6px;
+	-moz-border-radius: 6px;
+	border-radius: 6px;
+}
+
+.ErrorBox p
+{
+	font-weight: bold; 
+	font-size: 1.5em!important; 
+	padding: 0px 10px 0px 10px;	
+	color: maroon;
+}
+
+.ErrorBox li
+{
+font-weight: bolder;
+font-size: 1.2em;
+}
+
+.area { 
+	height: 125px; 
+	width: 400px;
+	background-color: #ECF3F2; 
+	position: relative;
+	margin: 35px 0px 20px 0px;
+	 
+	 border: 2px solid #ECF3F2;
+	-webkit-border-radius: 6px;
+	-moz-border-radius: 6px;
+	border-radius: 6px;
+}
+ 
+.bubble
+{
+	position: absolute; 
+  	width: 400px;
+  	height: 84px; 
+  	display: table;	
+}
+
+.bubble p
+{
+	font-weight: bold;
+	font-size: 16px!important;
+	display: table-cell; 
+  	vertical-align: middle; 
+  	padding: 10px;
+  	/*text-align: center;*/	
+}
+
+
+.styled-input-askadoc {
+	position: relative;
+	float: left;
+	background: white;
+	border: 2px solid #96B8B7;
+	-webkit-border-radius: 6px;
+	-moz-border-radius: 6px;
+	border-radius: 6px;
+	height: 28px;
+	font-size: medium;
+}
+
+#AskADocSubmitButton
+{
+	margin: 0!important;
+	padding: 0 0 2px!important;
+	display: block!important;
+	width: 94px!important;
+	height: 30px!important;
+	background: url(/images/layout/btn-search.png) no-repeat!important;
+	font: 12px/30px BreeBold, Arial, Helvetica, sans-serif!important;
+	color: #fff!important;
+	text-align: center!important;
+	cursor: pointer!important;
+	border: 0!important;
+	text-decoration: none!important;
+}
+
+.TextField label, .ComboBox label
+{
+	font: 16px/24px BreeLight, Arial, Helvetica, sans-serif!important;
+}
+
+p.ComboBox
+{
+	padding-bottom: 6px;	
+}
+
+.resources-box p 
+{
+	margin-bottom: 10px;
+}
+
+/*h2
+{
+	margin: 0 0 5px!important;
+	font: 16px/22px BreeBold, Arial, Helvetica, sans-serif!important;
+	color: #7D7D7D!important;
+}
+*/
+
+.askADoctorRecentCategory
+{
+	color: #0e7496 !important;
+	background: none !important;
+	width: 100% !important;
+	padding: 0px 0px 6px 0px !important;
+	/*border-bottom: 1px solid #eee !important;*/
+}
+
+.askADoctorRecentCategoryLink
+{
+	font-family: BreeRegular,Arial,Helvetica,sans-serif;
+	font-size: 13px;
+	text-transform: capitalize;
+	height: 26px;
+	text-decoration: none!important;
+	
+	/*display: block;*/
+	width: 159px;
+	/*overflow: hidden;*/
+	outline: none;
+	color: #0e7496;
+	/*background: url(/images/layout/arrow02.gif) no-repeat 100% 5px;*/
+	/*font: 12px/17px BreeBold, Arial, Helvetica, sans-serif;*/
+	
+}
+
+.askADoctorRecentCategory
+{
+	float: left!important;
+	width: 158px!important;
+	padding: 5px 0px 5px 0px!important;
+	border-bottom: 1px solid #eee!important;
+}

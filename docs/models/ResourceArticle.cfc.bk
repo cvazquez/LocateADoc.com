@@ -1,0 +1,81 @@
+<cfcomponent extends="Model" output="false">
+
+	<cffunction name="init">
+		<cfset hasOne("resourceArticlePreview")>
+		<cfset hasMany("resourceArticleProcedures")>
+		<cfset hasMany("resourceArticleSpecialties")>
+		<cfset hasMany("hitsResourceArticles")>
+		<cfset hasMany(name="hitsResourceArticlesInner",modelName="hitsResourceArticle",jointype="inner")>
+		<cfset hasMany(name="resourceArticleSiloNames",joinType="inner")>
+
+		<cfset hasOne("resourceArticleSiloName")>
+	</cffunction>
+
+	<cffunction name="searchArticles" returntype="query">
+		<cfargument name="category"  type="numeric" required="false" default="1">
+		<cfargument name="specialty" type="numeric" required="false" default="0">
+		<cfargument name="procedure" type="numeric" required="false" default="0">
+		<cfargument name="tag" 		 type="string" 	required="false" default="">
+		<cfargument name="article" 	 type="numeric" required="false" default="0">
+		<cfargument name="order" 	 type="string" 	required="false" default="ra.publishAt desc">
+		<cfargument name="preview"	 type="numeric"	required="false" default="0">
+		<cfargument name="offset"	 type="numeric"	required="false" default="0">
+		<cfargument name="limit"	 type="numeric"	required="false" default="10">
+
+		<cfquery name="searchResults" datasource="#get('dataSourceName')#">
+			SELECT SQL_CALC_FOUND_ROWS
+			ra.id, ra.publishAt,
+			<cfif arguments.preview eq 0>
+				rasn.siloName,ra.title,ra.metaKeywords,ra.metaDescription,ra.teaser,
+				ra.header,ra.createdAt,ra.content,ra.ogImage,
+			<cfelse>
+				raprev.title,raprev.metaKeywords,raprev.metaDescription,raprev.teaser,
+				raprev.header,raprev.createdAt,raprev.content,raprev.ogImage,
+			</cfif>
+			group_concat(DISTINCT cast(ras.specialtyId as char(10)) ORDER BY s.name) as specialtyIDs,
+			group_concat(DISTINCT s.name ORDER BY s.name) as specialties,
+			group_concat(DISTINCT cast(rap.procedureId as char(10)) ORDER BY p.name) as procedureIDs,
+			group_concat(DISTINCT p.name ORDER BY p.name) as procedures
+			FROM resourcearticles ra
+			<cfif arguments.preview neq 0>
+				JOIN resourcearticlepreviews raprev on ra.id = raprev.resourcearticleID
+			<cfelse>
+				JOIN resourcearticlesilonames rasn on ra.id = rasn.resourceArticleId
+			</cfif>
+				LEFT OUTER JOIN resourcearticlespecialties ras
+					JOIN specialties s on ras.specialtyId = s.id
+				ON ra.id = ras.resourceArticleId
+				LEFT OUTER JOIN resourcearticleprocedures rap
+					JOIN procedures p on rap.procedureId = p.id
+				ON ra.id = rap.resourceArticleId
+			WHERE ra.resourceArticleCategoryId = <cfqueryparam cfsqltype="cf_sql_integer" value="#arguments.category#">
+			<cfif arguments.specialty gt 0>
+				AND ras.specialtyId = <cfqueryparam cfsqltype="cf_sql_integer" value="#arguments.specialty#">
+			</cfif>
+			<cfif arguments.procedure gt 0>
+				AND rap.procedureId = <cfqueryparam cfsqltype="cf_sql_integer" value="#arguments.procedure#">
+			</cfif>
+			<cfif arguments.tag neq "">
+				AND FIND_IN_SET(<cfqueryparam cfsqltype="cf_sql_varchar" value="#arguments.tag#">,REPLACE(ra.metaKeywords,', ',','))
+			</cfif>
+			<cfif arguments.article gt 0>
+				AND ra.id = <cfqueryparam cfsqltype="cf_sql_integer" value="#arguments.article#">
+			</cfif>
+			<cfif arguments.preview eq 0>
+				AND rasn.deletedAt IS NULL
+			</cfif>
+				AND ra.deletedAt IS NULL
+				AND ras.deletedAt IS NULL
+				AND rap.deletedAt IS NULL
+			<cfif arguments.preview eq 0 or arguments.article eq 0>
+				AND ra.publishAt <= now()
+			</cfif>
+			GROUP BY ra.id<cfif arguments.preview neq 0>, raprev.id</cfif>
+			ORDER BY <cfif arguments.preview neq 0>raprev.createdAt DESC, </cfif>#arguments.order#
+			LIMIT #arguments.limit# OFFSET #arguments.offset#;
+		</cfquery>
+
+		<cfreturn searchResults>
+	</cffunction>
+
+</cfcomponent>

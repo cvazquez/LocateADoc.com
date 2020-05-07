@@ -1,0 +1,288 @@
+body
+{
+	margin: 0;
+	padding: 0;
+	background-image: url(/images/mobile/content_back.jpg);
+	background-repeat: no-repeat;
+	background-position: center 73px;
+	color: #464646;
+	font: 13px/20px BreeLight, Arial, Helvetica, sans-serif;
+}
+
+p, a
+{
+	font: 13px/14px BreeLight, Arial, Helvetica, sans-serif;
+}
+
+.hidden
+{
+	display:none;
+}
+
+.centered
+{
+	width: 320px;
+	margin: 0 auto;
+}
+
+#header
+{
+	height:83px;
+	background-image: url(/images/mobile/header_back.png);
+	background-repeat: repeat-x;
+}
+
+#bottom-content-wrapper
+{
+	background: url(/images/mobile/bottom-content-back.png) no-repeat top center;
+	margin-top: 25px;
+	padding: 5px 37px 0;
+	min-height: 240px;
+}
+
+#bottom-content-wrapper2
+{
+	/* background: url(/images/mobile/bottom-content-back.png) no-repeat top center;*/
+	background: #fff url(/images/mobile/comment-back.gif) repeat-x bottom;
+	margin-top: -10px;
+	padding: 5px 30px 10px;
+	border-top:3px solid #668D8C;
+}
+
+#bottom-content
+{
+	background-color: white;
+	padding-bottom: 10px;
+}
+
+#bottom-content p
+{
+	margin:0;
+}
+
+#site-wide-mini
+{
+	margin-top: -15px;
+}
+
+#site-wide-mini .input-wrapper
+{
+	width: 230px;
+	height: 24px;
+	background: url(/images/mobile/input-main.png) no-repeat top left;
+	margin: 10px 0;
+	padding: 0;
+}
+
+#site-wide-mini input
+{
+	width: 220px;
+	height: 22px;
+	background: url(/images/mobile/input-cap.png) no-repeat top right;
+	border: 0;
+	margin: 0;
+	padding: 0 10px 2px;
+	font: normal normal normal 16px 18px Arial, Helvetica, sans-serif;
+}
+
+.input-default
+{
+	color: #A2A2A2;
+	font-style: italic;
+}
+
+.saveMyInfo
+{
+	width: 20px !important;
+}
+
+.input-error
+{
+	background: url(/images/mobile/input-cap-error.png) no-repeat top right;
+	color: red;	
+}
+
+.input-errorp
+{
+	background: url(/images/mobile/input-main-error.png) no-repeat top right;
+}
+
+#site-wide-mini #submit
+{
+	background-image: url(/images/mobile/contact-a-doctor.png);
+	border: 0;
+	width: 133px;
+	height: 30px;
+	margin: 0 auto;
+}
+
+#footer-ad
+{
+	/*margin-top:10px;*/
+	/*border:1px solid #D0CACC;*/
+}
+
+.search-title
+{
+	margin: -25px 0 0 -20px;
+	padding: 0;
+}
+
+#doctor-top
+{
+	
+}
+
+#doctor-selector
+{
+	background-color: white;
+	/*border-top: 3px solid #577B77;*/
+	font: 13px/14px BreeLight, Arial, Helvetica, sans-serif;
+	padding-top: 3px;
+	/*margin-top: -10px;*/
+}
+
+#doctor-selector img
+{
+	padding: 2px;
+	border: 2px solid #BBB;
+	border-radius: 4px;
+	background-color: white;
+	margin-left: 10px;
+}
+
+.doctor-back
+{
+	height: 180px;
+	padding: 3px 0 10px;
+	background: #F7F6EB url(/images/mobile/doctor-back.gif) repeat-x bottom;
+}
+
+.doctor-back .centered
+{
+	position:absolute;
+	width: 320px;
+    left: 50%;
+    margin: 0 0 0 -165px;
+}
+
+#contactChecks
+{
+	/*margin-right: 10px;*/
+	max-width: 145px;
+	font-size: 12px;
+}
+
+.doctor-back h1
+{
+	/*margin-left:10px;*/
+}
+
+#message
+{
+	background: #fff url(/images/mobile/comment-back.gif) repeat-x bottom;
+	padding: 0 10px 5px;
+	margin-top: -10px;
+	border-top: 3px solid #577B77;
+}
+
+
+#message p
+{
+	font: 16px/18px BreeRegular, Arial, Helvetica, sans-serif;
+	font-style: italic;
+}
+
+#comments
+{
+	/*height:107px;*/
+	background: #fff url(/images/mobile/comment-back.gif) repeat-x bottom;
+	/*margin-top:-16px;*/
+	font: 13px/14px BreeLight, Arial, Helvetica, sans-serif;
+	padding-bottom: 10px;
+}
+
+#comments p
+{
+	margin:0;
+	font: 13px/14px BreeLight, Arial, Helvetica, sans-serif;
+}
+
+#comments textarea
+{
+	width:280px;
+	height: 60px;
+}
+
+#comments #submit
+{
+	background-image: url(/images/mobile/contact-doctors.png);
+	border: 0;
+	width: 128px;
+	height: 30px;
+	margin: 0 auto;
+}
+
+
+.padded
+{
+	padding: 0 10px;
+}
+
+h1
+{
+	margin: 0;
+	font: 20px/22px BreeRegular, Arial, Helvetica, sans-serif;
+	color: #A64942;
+}
+
+h2
+{
+	font: 18px/20px BreeBold, Arial, Helvetica, sans-serif;
+	color: #577B77;
+	margin: 0;
+	max-height: 40px;
+	overflow: hidden;
+}
+
+h3
+{
+	margin: 0;
+	font: 18px/20px BreeRegular, Arial, Helvetica, sans-serif;
+	font-style: italic;
+	max-height: 40px;
+	overflow: hidden;
+}
+
+address, .distance
+{
+	font: 13px/14px BreeLight, Arial, Helvetica, sans-serif;
+	margin: 0;
+}
+
+.doctorphone
+{
+	font: 13px/14px BreeRegular, Arial, Helvetica, sans-serif;
+	margin: 0;
+	color: #A64942;
+}
+
+.button
+{
+	display: block;
+	width: 156px;
+	height: 34px;
+	font: 14px/35px BreeBold, Arial, Helvetica, sans-serif;
+	color: white;
+	text-align: center;
+	background: url(/images/mobile/button-back.png) no-repeat;
+	overflow: hidden;
+	text-decoration: none;
+	text-transform: uppercase;
+	margin: 15px auto;
+}
+
+.ui-menu .ui-menu-item a
+{
+	font-size:15px;
+}

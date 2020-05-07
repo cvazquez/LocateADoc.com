@@ -1,0 +1,1333 @@
+body {
+   font-size: 16px;
+   /* https://developers.google.com/speed/docs/insights/UseLegibleFontSizes */
+  }
+
+#page-wrapper
+{
+	margin: 0;
+	padding: 0;
+	background: #fff url(/images/mobile/content_back.jpg) no-repeat center 73px;
+	color: #464646;
+	font: 1em/1.125em BreeLight, Arial, Helvetica, sans-serif;
+	width:100%;
+	/*max-width: 800px;*/
+}
+
+p, a
+{
+	font: 1em/1.125em BreeLight, Arial, Helvetica, sans-serif !important;
+}
+
+.hidden
+{
+	display:none;
+}
+
+.hidefirst{
+	visibility: hidden;
+	position:absolute!important;
+}
+
+.centered
+{
+	/*width: 320px;*/
+	width: 95%;
+	margin: 0 auto;
+}
+
+.bold{
+	font-weight: bold;
+}
+
+#header
+{
+	position: relative;
+	height:83px;
+	background-image: url(/images/mobile/header_back.png);
+	background-repeat: repeat-x;
+	z-index:10;
+}
+
+.site{
+	width: 100%
+}
+
+div.content-frame{
+	  padding: 0px 0px 0px 0px;
+}
+
+#bottom-content-wrapper
+{
+	/*background: url(/images/mobile/bottom-content-back.png) no-repeat top center;*/
+	margin-top: 25px;
+	/*padding: 5px 37px 0;*/
+	min-height: 240px;
+	
+		/* New */
+		background-color: white;
+		border: 5px solid #8AB1B0;
+		border-radius: 1em;
+		-webkit-border-radius: 1em;
+		-moz-border-radius: 1em;
+		padding: 0;	
+}
+
+#bottom-content-wrapper2
+{
+	/* background: url(/images/mobile/bottom-content-back.png) no-repeat top center;*/
+	background: #fff url(/images/mobile/comment-back.gif) repeat-x bottom;
+	margin-top: -10px;
+	padding: 5px 30px 10px;
+	border-top:3px solid #668D8C;
+}
+
+div#MobileHomePage div#bottom-content-wrapper {
+  padding-left: 2%;
+}
+
+#MobileHomePage .askadoc-questions .box, #MobileHomePage .box.blog {
+  padding-top: 5px;
+}
+
+#MobileHomePage .askadoc-questions .box .separator{
+	clear: both;   
+	border-bottom: 1px solid #d2d2d6;
+  	margin: 5px 0px 5px 0px;
+  	padding-top: 5px;
+}
+
+#MobileHomePage .search-box{
+	border-bottom: 2px solid #d2d2d6;
+	margin-bottom: 20px
+}
+
+#MobileHomePage .blog-list{
+	padding-top: 18px;
+}
+
+#MobileHomePage .blog-list h5{
+	margin-bottom:5px;
+	margin-top:5px; 
+	font: 14px/15px BreeBold, Arial, Helvetica, sans-serif;
+}
+
+div#MobileHomePage div#bottom-content {
+  margin: 0;
+}
+
+#bottom-content
+{
+	/*background-color: white;*/
+	padding-bottom: 10px;
+}
+
+#bottom-content p
+{
+	margin:0;
+	
+}
+
+p.input-wrapper{
+	padding: 0 5% 0 5%;
+	max-width: 450px;
+}
+
+#site-wide-mini
+{
+	margin-top: -15px;
+}
+/*
+#site-wide-mini .input-wrapper
+{
+	width: 230px;
+	height: 24px;
+	background: url(/images/mobile/input-main.png) no-repeat top left;
+	margin: 10px 0;
+	padding: 0;
+}
+*/
+#site-wide-mini .ui-input-text{
+	border-color: #577B77;
+}
+#site-wide-mini input
+{
+	width: 100%;
+	height: 22px;
+	/*background: url(/images/mobile/input-cap.png) no-repeat top right;
+	border: 0;*/
+	margin: 0;
+	padding: 0 10px 2px;
+	font: 1em/1.125em Arial, Helvetica, sans-serif;
+}
+
+.input-default
+{
+	color: #A2A2A2;
+	font-style: italic;
+}
+
+.saveMyInfo
+{
+	width: 20px !important;
+}
+
+.input-error
+{
+	background: url(/images/mobile/input-cap-error.png) no-repeat top right;
+	color: red;	
+}
+
+.input-errorp
+{
+	background: url(/images/mobile/input-main-error.png) no-repeat top right;
+}
+
+#site-wide-mini #submit
+{
+	background-image: url(/images/mobile/contact-a-doctor.png);
+	border: 0;
+	width: 133px;
+	height: 30px;
+	margin: 0 auto;
+}
+
+#footer-ad
+{
+	/*margin-top:10px;*/
+	/*border:1px solid #D0CACC;*/
+}
+
+.search-title
+{
+	margin: -25px 0 0 -20px;
+	padding: 0;
+}
+
+#MobileHomePage .search-title
+{
+	margin: 12px 0 0 -20px;
+	padding: 0;
+}
+
+#doctor-top
+{
+	
+}
+
+#doctor-selector
+{
+	background-color: white;
+	/*border-top: 3px solid #577B77;*/
+	font: 13px/14px BreeLight, Arial, Helvetica, sans-serif;
+	padding-top: 3px;
+	/*margin-top: -10px;*/
+}
+
+#doctor-selector img
+{
+	padding: 2px;
+	border: 2px solid #BBB;
+	border-radius: 4px;
+	background-color: white;
+	margin-left: 10px;
+}
+
+.doctor-back
+{
+	height: 180px;
+	padding: 3px 0 10px;
+	background: #F7F6EB url(/images/mobile/doctor-back.gif) repeat-x bottom;
+}
+
+.doctor-back .centered
+{
+	position:absolute;
+	width: 320px;
+    left: 50%;
+    margin: 0 0 0 -165px;
+}
+
+#contactChecks
+{
+	/*margin-right: 10px;*/
+	max-width: 145px;
+	font-size: 12px;
+}
+
+.doctor-back h1
+{
+	/*margin-left:10px;*/
+}
+
+#message
+{
+	background: #fff url(/images/mobile/comment-back.gif) repeat-x bottom;
+	padding: 0 10px 5px;
+	margin-top: -10px;
+	border-top: 3px solid #577B77;
+}
+
+
+#message p
+{
+	font: 16px/18px BreeRegular, Arial, Helvetica, sans-serif;
+	font-style: italic;
+}
+
+#comments
+{
+	/*height:107px;*/
+	background: #fff url(/images/mobile/comment-back.gif) repeat-x bottom;
+	/*margin-top:-16px;*/
+	font: 13px/14px BreeLight, Arial, Helvetica, sans-serif;
+	padding-bottom: 10px;
+}
+
+#comments p
+{
+	margin:0;
+	font: 13px/14px BreeLight, Arial, Helvetica, sans-serif;
+}
+
+#comments textarea
+{
+	width:280px;
+	height: 60px;
+}
+
+#comments #submit
+{
+	background-image: url(/images/mobile/contact-doctors.png);
+	border: 0;
+	width: 128px;
+	height: 30px;
+	margin: 0 auto;
+}
+
+
+.padded
+{
+	padding: 0 10px;
+}
+
+h1
+{
+	margin: 0;
+	font: 2.25em/1.375em BreeRegular, Arial, Helvetica, sans-serif;
+	color: #A64942;
+	line-height: 1em;
+}
+
+h2
+{
+	font: 1.5em/1em BreeBold, Arial, Helvetica, sans-serif;
+	color: #577B77;
+	margin: 0;
+	max-height: 40px;
+	/*overflow: hidden;*/
+}
+
+h3
+{
+	/* 
+	margin: 0;
+	font: 18px/20px BreeRegular, Arial, Helvetica, sans-serif;
+	font-style: italic;
+	*/
+	color: #577B77;
+    font: 1.125em/1em BreeBold,Arial,Helvetica,sans-serif;
+    margin: 4px 0;
+	max-height: 40px;
+	overflow: hidden;
+}
+h3 a
+{
+	color: #577B77!important;
+    font: 1.125em/1em BreeBold,Arial,Helvetica,sans-serif!important;
+}
+
+h4
+{
+	color: #5d5d5d;
+    font: 1.425em/1em BreeLightOblique, Arial, Helvetica, sans-serif;
+    margin: 0;
+	/*max-height: 40px;*/
+	overflow: hidden;
+}
+
+address, .distance
+{
+	font: 13px/14px BreeLight, Arial, Helvetica, sans-serif;
+	  font-weight: bold;
+	margin: 0;
+}
+
+.doctorphone
+{
+	font: 13px/14px BreeRegular, Arial, Helvetica, sans-serif;
+	margin: 0;
+	color: #A64942;
+}
+
+.button
+{
+	display: block;
+	width: 156px;
+	height: 34px;
+	font: 14px/35px BreeBold, Arial, Helvetica, sans-serif !important;
+	color: white !important;
+	text-align: center;
+	background: url(/images/mobile/button-back.png) no-repeat;
+	overflow: hidden;
+	text-decoration: none;
+	text-transform: uppercase;
+	/*margin: 15px auto;*/
+	margin-left: 25%;
+}
+
+.ui-menu .ui-menu-item a
+{
+	font-size:12px;
+}
+
+input.ui-input-text, textarea.ui-input-text, .ui-input-search
+{
+	-webkit-box-sizing: content-box;
+	-moz-box-sizing: content-box;
+	-ms-box-sizing: content-box;
+	box-sizing: content-box; 
+}
+
+#mobile-content
+{
+	/*padding-bottom: 10px;*/
+	/*width:266px;*/
+	max-width: 800px;
+	width: 95%;
+	padding: 12px 10px 10px 10px;
+}
+
+#mobile-content p
+{
+	margin: .75em 0;
+}
+
+#mobile-content h2
+{
+	/*overflow: hidden;*/
+	margin: 7px -11px 0;
+	padding: 7px 11px;
+	/*background: url(/images/layout/bg-widget-ttl.gif) no-repeat 50% 100%;*/
+}
+
+#mobile-content h2 span
+{
+	font: 13px/14px BreeLight, Arial, Helvetica, sans-serif !important;
+}
+
+#mobile-content img{
+	max-width:266px;
+}
+
+#videoslider
+{
+	width: 266px;
+	height: 210px;
+	list-style: none;
+	/* Prevent FOUC (see FAQ page) and keep things readable if javascript is disabled */
+	overflow-y: auto;
+	overflow-x: hidden;
+}
+
+#videoslider li
+{
+	width:266px;
+	text-align:center;
+	background: url(/images/mobile/video-carousel-back.png) no-repeat 1px 0;
+}
+
+#videoslider img
+{
+	border:2px solid #ddd;
+	padding:2px;
+	-webkit-border-radius: 3px;
+	-moz-border-radius: 3px;
+	border-radius: 3px;
+}
+
+#videoslider h3
+{
+	font: 14px/16px BreeBold, Arial, Helvetica, sans-serif;
+}
+
+.cont-list{
+	width:100%;
+	overflow:hidden;
+	font:12px/15px Arial, Helvetica, sans-serif;
+}
+.cont-list ul{
+	margin:0;
+	padding:0 0 28px;
+	list-style:none;
+	width:100%;
+	overflow:hidden;
+}
+.cont-list ul li{
+	width:100%;
+	float:left;
+	margin-bottom:5px;
+	padding:0 0 17px;
+	overflow:hidden;
+	border-bottom:1px solid #d2d2d6;
+}
+
+.cont-list ul li.guide-preview img
+{
+display: block;
+float: left;
+margin: 0px 10px 5px 0px!important;
+padding: 2px;
+border: 2px solid #BBBBBB;
+border-radius: 4px;
+}
+
+.cont-list2 ul li{padding-bottom:5px;}
+.cont-list3 ul li{
+	padding-bottom:12px;
+	margin-bottom:9px;
+}
+.cont-list .head{
+	width:100%;
+	margin:11px 0 0;
+	overflow:hidden;
+	padding:0 0 1px;
+}
+.cont-list .head strong, .practice-name{
+	float:right;
+	color:#925069;
+	font:14px BreeBold, Arial, Helvetica, sans-serif;
+}
+.cont-list .head strong a{
+	color:#925069;
+	text-decoration:none;
+}
+.cont-list .head strong a:hover{text-decoration:underline;}
+.cont-list .head div{
+	float:left;
+	/*width:250px;*/
+	width: 100%;
+}
+.cont-list .head .date{
+	display:block;
+	font-size:11px;
+	line-height:14px;
+	font-style:normal;
+}
+.cont-list .head h3{
+	margin:0;
+	color:#577b77;
+	font:14px/18px BreeBold, Arial, Helvetica, sans-serif;
+	padding-top: 0px;
+}
+
+.cont-list .head h3.guides{
+	width: 575px;
+}
+
+.cont-list .head h3.featuresarticles{
+	width: 575px;
+}
+
+.cont-list2 .head div.doctorbox{
+	width: 400px;
+	padding: 10px 0px 0px 10px;
+}
+
+.cont-list .head h3 a{
+	color:#577b77;
+	text-decoration:none;
+}
+.cont-list .head h3 a:hover{text-decoration:underline;}
+.cont-list p{margin:0 0 4px;}
+.page9 .widget .cont-list p{padding-right:95px;}
+.inner-holder .sidebox .visual,
+.cont-list .visual{
+	float:left;
+	width:71px;
+	background:url(/images/layout/bg-cl-visual.gif) repeat-y;
+	margin:3px 11px 0 0;
+}
+
+.blog-photo img
+{
+	margin: 5px 10px;
+	float:left;
+}
+
+.blog-preview{
+	border-bottom: 1px solid #d2d2d6; 
+	width: 90%; 
+	margin-bottom: 8px!important;
+	padding: 0px 0 10px 0px!important;
+}
+
+.blog-preview .ui-link{ 
+  font-size: .6em!important;
+  /* float: left; */
+  padding-right: 12px;
+  background: url(/images/layout/arrow01.gif) no-repeat 100% 1px;
+  text-decoration: none;
+  position: relative;
+}
+
+div.anythingSlider .arrow a 
+{
+	margin: -95px 0 0 29px !important;
+}
+
+div.anythingSlider .forward
+{
+	right: 29px !important;
+}
+
+#mobile-logo
+{
+	width:320px;
+	height:63px;
+	margin: 0 auto;
+}
+
+h3#mobile-logo
+{
+	max-height: 63px;
+}
+
+h3#mobile-logo a
+{
+	border:0;
+	background:transparent;
+	height:63px;
+}
+
+h3#mobile-logo a .ui-icon
+{
+	/*display: none;*/
+	margin-top: -15px;
+	margin-right: 18px;
+}
+
+#mobile-logo-wrapper .ui-collapsible-content
+{
+	padding-top:0;
+	margin-top: -7px;
+}
+
+.metadata
+{
+	margin:8px 0;
+}
+
+.swm, .clear
+{
+	clear:both;
+}
+
+.swm #site-wide-mini
+{
+	/*width: 240px;*/
+	  width: 85%;
+	  max-width: 450px;
+	/*margin: 0 auto;*/
+	  margin-left: 5%;
+  margin-top: 5px;
+}
+/* Fix for jQuery Mobile transitions */
+.ui-page { -webkit-backface-visibility: hidden; }
+
+.pagination
+{
+	width:100%;
+	max-width: 275px; 
+	height:39px; 
+	border-collapse:collapse; 
+	padding:0;
+}
+.pagination .left-page-holder
+{
+	text-align:right; 
+	width:42px;
+}
+.pagination .left-page-indicator{
+	text-align:right; 
+	vertical-align:middle; 
+	width:49px; 
+	height:39px;
+}
+.pagination .page-box{
+	text-align:center; 
+	vertical-align:middle; 
+	height:39px;
+}
+.pagination .right-page-indicator{
+	text-align:left; 
+	vertical-align:middle; 
+	width:49px; 
+	height:39px;
+}
+.pagination .right-page-holder
+{
+	text-align:left; 
+	width:42px;
+}
+
+.dateflag
+{
+	color: #A64942;
+	font-weight: bold;
+	margin-top: 5px;
+}
+
+.left-aligned{
+	text-align: left!important;
+}
+
+#topBar{
+	position: fixed; 
+	top: 0px; 
+	left: 0px; 
+	z-index: 5000; 
+	height: 50px; 
+	width: 100%;
+	background: url('/images/layout/bg-contact-box-2.png') repeat-x scroll 0px -20px transparent;
+	opacity:0.9; 
+	display:none;
+}
+#topBarContent{
+	position: fixed; 
+	top: 0px; 
+	left: 0px; 
+	z-index: 5001; 
+	height: 50px; 
+	width: 100%;
+	color:#ffffff; 
+	font: 14px/19px BreeRegular,Arial,Helvetica,sans-serif; 
+	display:none;
+	
+  text-shadow: #000000 0 0 5px;
+  text-align: left;
+}
+
+#topBarContent a{
+	margin: 7px;
+	color:#ffffff; 
+	/*font-weight: bold!important;
+   color: #000000; 
+  color: #2489ce;*/
+}
+
+.article{
+	padding-top: 10px;
+	clear: both;
+}
+
+.article img{
+	  margin: 0px 10px 0px 0px;
+}
+
+label.ui-slider{
+	margin-top: 8px!important;	
+	margin-right: 10px!important;
+	margin-left: -10px;
+}
+
+.saveMyInfoSliderLabel
+{
+	display:inline-block; 
+	float:left; 
+	margin: 7px 25px 0 0; 
+	padding-left: 5%;
+}
+
+.askadoc-question-separator{
+	clear: both; 
+	border-bottom: 1px solid #d2d2d6; 
+	padding-top: 15px;	
+}
+
+.sidebox{
+	padding: 20px 4%;
+}
+
+ul.latestQuestions, ul.latestCategories{
+	padding-left: 5%;
+	margin-top: 0px;
+}
+
+ul.articles{
+	padding-left: 0%;
+	margin-top: 5px;
+	list-style:none;
+}
+
+ul.latestQuestions li, ul.latestCategories li, ul.articles li {
+  margin-bottom: 5px;
+}
+
+.askadoc-questions-image-widget{
+	width: 49%;	
+}
+
+.askadoc-questions-widget{
+	float: left;
+	width: 60%;
+	text-decoration: none;
+	color: #2489ce;
+	margin-bottom:5px;
+	margin-top:5px; 
+	font: 14px/15px BreeBold, Arial, Helvetica, sans-serif;
+}
+
+.askadoc-questions-widget a{
+	text-decoration: none;
+}
+
+
+.askadoc-questions-widget .read-more, .qa-holder a.read-more { 
+  font-size: .6em!important;
+  /* float: left; */
+  padding-right: 12px;
+  	padding-left: 5px;
+  background: url(/images/layout/arrow01.gif) no-repeat 100% 1px;
+  text-decoration: none;
+  position: relative;
+  text-transform: uppercase;
+}
+
+
+hr.separator{
+	width: 90%;
+  background: linear-gradient(to right, silver, gray, silver);
+  height: 2px;
+  padding-top: 0px;
+  padding-bottom: 0px;
+  margin-top: 0px;
+  margin-bottom: 0px;
+  border-radius: 30em;
+}
+
+.swm h2{
+	padding-left: 5%;
+}
+
+div.swm{
+	padding-top: 20px;	
+}
+
+.swm ~ hr.separator {
+  margin-top: 20px;
+}
+
+
+/* Profile */
+.breadcrumbs {
+  margin: 4px 0px 8px -9px;
+  padding: 0;
+  list-style: none;
+  width: 100%;
+  overflow: hidden;
+}
+.breadcrumbs li{
+	margin-left:3px;
+	padding-left:3px;
+	font-size:0.95em;
+	line-height:16px;
+	color:#fff;
+	float:left;
+	display:inline;
+	background:url(/images/layout/separator06.png) no-repeat;
+}
+.breadcrumbs li:first-child,
+.breadcrumbs li.first-chil{background:none;}
+.breadcrumbs li a{color:#f0efdb;}
+
+img.profile-doctor-photo{
+  max-width: 266px;
+  border-radius: 7em;
+  border-color: #577170;
+  border-style: solid;
+  border-width: 2px;	
+}
+
+div.ProfileLogos{
+	max-width: 250px;
+	margin: auto;
+	width: 130px;
+	top: -15px;
+	position: relative;
+}
+
+div.ProfileLogos div.tooltip{
+	float: left;
+	width: 50%;
+    margin: 0 auto;
+}
+
+div.logo{
+	clear:both;
+}
+
+.photo
+{
+	/*background: url(/images/profile/doctor_photo_border.png) no-repeat center;*/
+	/*margin-left: 25%;*/
+	text-align: center;
+}
+
+.photo #doctor_photo_border{
+	  position: absolute;
+}
+
+#badge-top-doctor, #badge-board-member{
+	background-color: #5e7b76;
+	clear: both;
+	color: white;
+	margin-bottom: 2px;
+	text-align: center;
+	width: 100%;
+	padding: 5px;
+}
+
+p.fn.name{
+  color: #934843;
+  font-weight: bolder!important;
+  font-size: 1.2em!important;
+  clear: both;
+  text-align: center;
+  margin-bottom: 2%!important;
+}
+
+p#practicename{
+  text-align: center;
+  font-size: .8em!important;
+  font-weight: bolder!important;
+  padding-top: 0px;
+  margin-top: 0px!important;
+  color: #464646;
+}
+
+div#get-a-consultation{
+	background-color: #A94744;
+	color: white;
+	clear: both;
+	text-align: center;
+	width: 200px;
+	padding: 10px;
+	margin: auto;
+}
+
+.contact-box {
+  border: 1px solid black;
+  margin-top: 1em;
+  margin-bottom: 1em;
+  padding: 4% 5%;
+  text-align: center;
+  max-width: 325px;
+  
+  margin-left: auto;
+  margin-right: auto;
+  width: 70%;
+}
+
+div.contact-address{
+	/*float:left;*/	
+}
+div.contact-list{
+	clear: both;
+	padding: 12px 0 0px 0;
+	  color: #1D6981!important;
+  font-weight: bolder!important;
+}
+
+ul.contact-icons {
+  /*width: 310px;*/
+  /*position: absolute;*/
+  margin: 0;
+  padding: 0;  
+  bottom: 8px;
+  left: 0;
+  list-style: none;
+}
+
+ul.contact-icons li{
+	float:left;
+	display:inline;
+	padding-right: 2%;
+}
+
+.GetConsultation{
+	clear: both;
+	padding-top: 0px;
+}
+
+div.tabnav{
+  margin-left: auto;
+  margin-right: auto;
+  width: 70%;
+  max-width: 200px;
+}
+
+div.tabset {
+  
+  /*display: inline-block;*/
+  /* For IE, the outcast */
+  /*float: left;*/
+  padding: 2px 5px;
+  border: 1px solid black;
+  background-color: #5e7b76;
+  color: white;
+  margin: 1px;
+  font: 1em/1.125em BreeLight, Arial, Helvetica, sans-serif!important;
+  text-align: center;
+}
+
+div.tabset a {
+  color: white!important;
+ /* font-weight: bold!important;*/
+  text-decoration: none;
+}
+
+div.tabset a .current {
+  color: silver!important;
+}
+
+div.twocolumns{
+	clear: both;
+	padding-top: 15px;
+}
+
+.text-block{
+	margin-top: 12px;
+}
+
+.welcome-box .video-holder {
+  margin-bottom: 18px;
+  padding-bottom: 0px;
+  width: 100%;
+  background: url(/images/layout/bg-hor-blue-mobile.gif) no-repeat 0 100%;
+  overflow: hidden;
+}
+
+.video-holder h2{
+	margin: 0px -10px 32px!important;
+  	padding: 7px 11px;
+}
+
+.video-holder h3{
+	color: #577B77;
+	font: 1.125em/1em BreeBold,Arial,Helvetica,sans-serif;
+	margin: 15px 0 2px;
+	max-height: 40px;
+	overflow: hidden;
+}
+
+.welcome-box h4 {
+  color: #73756A;
+  font: bold 11pt Arial,sans serif,sans;
+}
+
+.welcome-box p {
+  margin-top: 10px!important;
+}
+
+.text-block ul{
+	margin-left: -12px;
+}
+
+ul.procedures-list{
+	margin-left: -12px;
+}
+
+/* Profile: image-list */
+.image-list{
+	margin:20px 0px 0px 0px;
+	padding:0;
+	list-style:none;
+	width:100%;
+	overflow:hidden;
+	clear:both;
+}
+.image-centered-for-two{
+	padding:0px 0px 0px 98px;
+}
+.image-list li{
+	margin-left:10px;
+	display:inline-block;
+	width:183px;
+}
+.image-list li:first-child,
+.image-list li.first-child{margin-left:2px;}
+.image-list .image{
+	padding:4px;
+	width:175px;
+	height:90px;
+	background:url(/images/layout/bg-image.gif) no-repeat;
+	position:relative;
+	overflow:hidden;
+}
+.image-list .image img{vertical-align:top;}
+.image-list .image .caption{
+	position:absolute;
+	left:4px;
+	bottom:4px;
+	padding:2px 0 3px 27px;
+	width:148px;
+	background:#678483 url(/images/layout/bg-caption.gif) no-repeat;
+	font:14px/18px BreeRegular, Arial, Helvetica, sans-serif;
+	color:#faf2e9;
+	text-align:left;
+}
+
+
+/* Virtual Office Tour */
+/* Practice Tour */
+
+.claimprofile-modal,
+.tour-modal,
+.case-modal,
+.video-modal,
+.procedures-modal{
+	width:977px;
+	position:absolute;
+	display:block;
+	clear:both;
+	overflow:hidden!important;
+}
+.compare-modal .modal-box{
+	width: auto;
+}
+.modal-box{
+	width:933px;
+	clear:both;	
+	margin:0px;
+	padding:0px;
+	border:none;
+	border-collapse:collapse;
+}
+.modal-box tr, .modal-box td{
+	margin:0px;
+	padding:0px;	
+}
+.modal-box .row-t{
+	height:6px;	
+}
+.modal-box .row-t .l-t{
+	background:url(/images/profile/bg-tour-l-t.png) top left no-repeat;
+	width:7px;
+	height:6px;
+}
+.modal-box .row-t .t{
+	background:url(/images/profile/bg-tour-t.png) top right no-repeat;
+	height:6px;
+}
+.modal-box .row-c .l{
+	background:url(/images/profile/bg-tour-l.png) top left repeat-y;
+	width:7px;
+}
+.modal-box .row-c .c{
+	background:url(/images/profile/bg-tour-c.png) top right repeat-y;
+	max-width:933px;
+	padding: 10px 17px 10px 10px;
+	font-family: Arial,Helvetica,sans-serif;
+	text-align:left;
+	overflow-x: hidden;
+}
+.modal-box .tour-stop{
+	margin:0px;
+	padding:0px;
+	border:none;
+	border-collapse:collapse;
+}
+.modal-box .tour-stop .tour-picture{
+	vertical-align:top;
+	padding-right:30px;
+}
+.modal-box .tour-stop .tour-body{
+	vertical-align:bottom;
+}
+.modal-box .tour-stop .tour-body h2{
+	margin-bottom: 20px;
+	font-family: BreeRegular,Arial,Helvetica,sans-serif;
+	font-size: 24px;
+	line-height: 28px;
+	color: #a64942;
+}
+.modal-box .tour-stop .tour-body h4{
+	margin-bottom: 10px;
+	font-family: BreeBold,Arial,Helvetica,sans-serif;
+	font-size: 14px;
+	line-height: 17px;
+	color: #577b77;
+}
+.modal-box .row-b{
+	height:7px;	
+}
+.modal-box .row-b .l-b{
+	background:url(/images/profile/bg-tour-l-b.png) bottom left no-repeat;
+	width:7px;
+	height:7px;
+}
+.modal-box .row-b .b{
+	background:url(/images/profile/bg-tour-b.png) bottom right no-repeat;
+	height:7px;
+}	
+.modal-box .closebutton{
+	background:url(/images/resources/bg-close-button.png) no-repeat;
+	width:94px;
+	height:31px;
+	position:relative;
+	top:15px;
+	left:20px;
+	cursor:pointer;
+    float:right;
+    margin-top:-15px;
+}
+.modal-box .backbutton{
+	background:url(/images/profile/bg-tour-back.png) no-repeat;
+	width:96px;
+	height:30px;
+	position:relative;
+	top:-15px;
+	left:-20px;
+	cursor:pointer;
+    float:left;
+	margin-bottom:-15px;
+}
+.modal-box .nextbutton{
+	background:url(/images/profile/bg-tour-next.png) no-repeat;
+	width:94px;
+	height:30px;
+	position:relative;
+	top:-15px;
+	left:20px;
+	cursor:pointer;
+    float:right;
+	margin-bottom:-15px;
+}
+
+
+/* Contact Form Modal */
+.add-comment .procedures-checklist,
+.contact-us .procedures-checklist,
+.procedures-modal .procedures-checklist{
+	display:block;
+	max-height:200px;
+	width:575px;
+	overflow-y:auto;
+	background-image: url("/images/layout/bg-hor-blue.gif");
+	background-repeat: no-repeat;
+	background-attachment: scroll;
+	background-position: left bottom;
+	border: 1px solid #ABADB3;
+	padding: 8px;
+	clear:left;
+}
+.procedures-modal .procedures-checklist{
+	width:875px;
+	background-position: center bottom;
+}
+
+.add-comment .procedures-checklist .procedure,
+.contact-us .procedures-checklist .procedure,
+.procedures-modal .procedures-checklist .procedure{
+	display: block; 
+	width: 185px;
+	height: 20px; 
+	float: left;
+	overflow: hidden;
+}
+.procedures-modal .procedures-checklist .procedure{width:285px;}
+
+.add-comment .procedures-checklist .procedure .checkboxArea,
+.add-comment .procedures-checklist .procedure .checkboxAreaChecked,
+.contact-us .procedures-checklist .procedure .checkboxArea,
+.contact-us .procedures-checklist .procedure .checkboxAreaChecked,
+.procedures-modal .procedures-checklist .procedure .checkboxArea,
+.procedures-modal .procedures-checklist .procedure .checkboxAreaChecked{
+	margin-right: 5px;
+}
+.add-comment .procedures-checklist .procedure p,
+.contact-us .procedures-checklist .procedure p,
+.procedures-modal .procedures-checklist .procedure p
+{
+	display: block;
+	margin: 0px;
+	padding: 0px;
+	width: 160px;
+	height: 30px;
+	float: left;	
+}
+.procedures-modal .procedures-checklist .procedure p{width:260px;}
+
+procedures-of-interest{
+	float: left;
+}
+
+
+/* Profile - Staff */
+
+.staff-photo, .doctor-photo-thumb, .AskADocExpertsThumbnailBorder3, .profile-testimonial-image, .blog-photo, .askadoc-questions-doctor-photo{
+	border-radius: 10px;
+  border: 2px solid silver;
+  padding: 3px 3px 1px 3px;
+  max-width: 105px;
+  float: left;
+    margin-right: 5px;
+}
+
+.staff-photo img, .doctor-photo-thumb img, .AskADocExpertsThumbnailBorder3 img, .profile-testimonial-image img, .blog-photo img, .askadoc-questions-doctor-photo img{
+	width: 63px;
+	  margin: 0!important;
+	  border-radius: .5em;
+}
+
+
+/* Profile - Ask A Doctor */
+#mobile-content .pagination {
+  margin-bottom: 18px;
+}
+
+/* Profile - Contact Form */
+.profile-contact-form .styled-input{
+	width: 215px; height:20px;
+}
+
+.profile-contact-form .styled-input input{
+	width:179px;
+}
+
+.profile-contact-form label.ui-input-text, .profile-contact-form label.ui-select{
+	margin-top: 0px;
+	  margin-bottom: -9px;
+}
+
+.profile-contact-form  div.row{
+	  padding-top: 0px;
+  padding-bottom: 33px;
+}
+
+.profile-contact-form fieldset{
+	margin-bottom: -40px;
+}
+
+.asterick{
+	  margin-bottom: 10px;
+}
+
+.facebook-sign-in {
+  display: inline-block;
+  width: 192px;
+  height: 34px;
+  background: url(/images/layout/facebook-sign-in.png) no-repeat 0 0;
+  cursor: pointer;
+}

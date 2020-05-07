@@ -1,0 +1,59 @@
+#answer-content img{
+  	display: block;
+  	float: left;
+  	margin: 0px 10px 10px 0px;
+  	padding: 2px;
+  	border: 2px solid #BBBBBB;
+  	border-radius: 4px;
+}
+
+.prompt-box .modal-box {
+width: 590px;
+clear: both;
+margin: 0px;
+padding: 0px;
+border: none;
+border-collapse: collapse;
+height: 212px;
+}
+
+.prompt-box .modal-box .closebutton {
+background: url(/images/resources/bg-close-button.png) no-repeat;
+width: 94px;
+height: 31px;
+position: relative;
+top: 47px;
+left: 20px;
+cursor: pointer;
+float: right;
+margin-top: 0px;
+}
+
+
+.AskYourQuestion
+{
+	text-decoration: underline;
+	font-family: BreeRegular, Arial, Helvetica, sans-serif;
+	font-size: 20px;
+	font-style: normal;
+	font-variant: normal;
+	font-weight: normal;	
+	color: #0e7496;
+	padding-bottom: 25px;
+	width: 160px;
+}
+
+.AskYourQuestion:hover
+{
+	text-decoration: none;
+	cursor: pointer;
+}
+
+.button-prompt
+{
+	width: 30%; 
+	margin-left: auto; 
+	margin-right: auto; 
+	padding-top: 15px; 
+	cursor: pointer;
+}

@@ -1,0 +1,82 @@
+div.comment-dialog{
+	background:none;
+	border:none;
+	margin:0px;
+	padding:0px;
+	overflow:hidden;
+}
+
+.comment-dialog .ui-dialog-titlebar{
+	display:none;
+}
+.comment-dialog .comment-modal{
+	overflow:hidden;
+}
+table.comment-box{
+	width:700px;
+}
+.add-comment{
+	/*width: 660px;
+	height: 600px;*/
+	overflow-x:hidden;
+	overflow-y:auto;
+	color: #6C6C6C;
+    font: 12px BreeRegular,Arial,Helvetica,sans-serif;
+    border-bottom: 1px solid #DDDDDD;
+    padding-bottom:10px;
+    margin-bottom:10px;
+}
+.add-comment .procedures-checklist{width:565px;}
+.add-comment .procedures-checklist .procedure{width:182px;}
+
+.drop-comment-states{
+	z-index:1050;
+}
+
+.comment-dialog .btn-search{
+    background: url("/images/layout/btn-search.png") no-repeat scroll 0 0 transparent;
+    border: 0 none;
+    color: #FFFFFF;
+    cursor: pointer;
+    display: block;
+    font: 12px/30px BreeBold,Arial,Helvetica,sans-serif;
+    height: 30px;
+    margin: 0;
+    padding: 0 0 2px;
+    text-align: center;
+    text-decoration: none;
+    width: 94px;
+}
+
+.add-comment h2{
+	display: inline-block;
+	width:150px;
+}
+.add-comment a.terms-link{
+	display: inline-block;
+	float:right;
+	margin: 5px 20px 0 0;
+}
+.add-comment textarea{
+	width: 487px!important;
+	height: 129px!important;
+}
+td.review-photo{
+	vertical-align: top;
+}
+.review-photo img{
+	border:2px solid #BBBBBB;
+	border-radius:4px 4px 4px 4px;
+	padding:2px;
+}
+.review-body p{
+	margin-top:0px;
+}
+.author-name{
+	color: #6C6C6C;
+    font: 14px BreeBold,Arial,Helvetica,sans-serif;
+}
+.review-date{
+	float:right;
+	display:inline-block;
+}

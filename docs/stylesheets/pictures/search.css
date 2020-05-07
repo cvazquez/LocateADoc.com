@@ -1,0 +1,124 @@
+hr {
+	background-color:#eee;
+	border:0px;
+	height:1px;
+}
+
+h3.showAllDocs {
+	cursor:pointer;
+}
+
+div#allDocs, div#allProcs {
+	display:none !important;
+}
+
+table.filter-box{
+	width:737px;
+}
+
+div.filter-scroll{
+	max-height:700px;
+	overflow-x:hidden;
+	overflow-y:auto;
+}
+
+table.allDocs{
+	width:686px;
+}
+
+table.allDocs td{
+	width:226px;
+	vertical-align:top;
+}
+
+table.allDocs ul, 
+table.allDocs li{
+	padding:0;
+	margin:0;
+	list-style:none;
+	font: 12px Arial,Helvetica,sans-serif;
+}
+
+img.casedetails {
+	cursor:pointer;
+}
+
+.descr a {
+	color:#A64942;
+}
+
+.search-box .slide ul li div{
+	display:inline-block;
+}
+
+.resources-box form.pager-form{
+	margin: 2px 0 0;
+}
+
+/*.resources-box .title div{
+	width:100%;
+}*/
+
+.resources-box .title span.totalmatched{
+	display:inline-block;
+	clear:left;
+}
+
+.resources-box h1 a{
+	color: #A64942;
+	text-decoration: none;
+}
+
+
+ul.results-list li{
+	width:400px; 
+	padding-bottom:13px; 
+	margin-bottom:10px; 
+	background: url('/images/layout/bg-widget-ttl.gif') no-repeat scroll 50% 100% transparent;
+}
+
+ul.results-list li div{
+	display:inline-block;
+}
+
+ul.results-list h2{
+	margin-bottom:5px;
+}
+
+ul.results-list .images{
+	float:left; margin-bottom:0px;
+}
+
+ul.results-list .description{
+	float:left; 
+	width:190px; 
+	padding-left:10px;
+}
+
+ul.results-list h4{
+	color:#6C6C6C;
+}
+
+ul.results-list .btn-contactdoc{
+	margin:0;
+	float:right;
+}
+
+ul.results-list .FilteredDescription{
+	display:inline-block; 
+	margin-top:10px;
+}
+
+ul.results-list .content-field1{
+	height:51px;
+	overflow:hidden;
+}
+
+ul.results-list .content-field2{
+	display:none; 
+	overflow:hidden;
+}
+
+ul.results-list .content-field p{
+ margin:0;
+}

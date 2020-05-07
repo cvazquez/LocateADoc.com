@@ -1,0 +1,121 @@
+.printable{
+	background: none!important;	
+	margin: 0px;
+	padding: 30px;
+	width:750px!important;
+}
+
+.printable .w1{background: none!important;}
+.printable .w2{margin: 0 0 0 0!important;}
+.printable .w3{
+	width: 750px!important;
+	padding-top: 0px!important;
+}
+
+.printable h1.logo{
+	position: static;
+	margin: 0px 0 0 0px;
+}
+
+.printable #main,
+.printable .container{
+	background: none!important;
+	width:750px!important;
+	padding: 0;
+	height:auto;
+	min-height:0;
+}
+
+.printable .inner-holder{
+	width: 100% !important;
+}
+
+.printable .aside1{
+	width:auto;
+}
+
+.printable #footer{
+	margin-top:15px;
+	background: none!important;
+	width:750px;
+}
+
+.printable #footer .frame{
+	width:750px;
+	display:block;
+	clear:both;
+}
+
+.printable #footer .frame .member{padding-top:12px;}
+
+.printable #footer .text-box{width:430px;}
+
+.printable .breadcrumbs,
+.printable .ad-heading_ad-space,
+.printable #sidebar,
+.printable .options,
+.printable #article-widgets,
+.printable .btn-compare,
+.printable .compare-box,
+.printable .check,
+.printable .doctor-gallery,
+.printable ul.image-list,
+.printable .w3>.aside,
+.printable .sidebox,
+.printable .ad,
+.printable .topsections .photo,
+.printable .topsections .btn-contact,
+.printable .topsections .link-box,
+.printable .tabnav{
+	display:none;
+}
+
+.printable .cont-list ul li {
+	float:none;
+	overflow:auto;
+	width:auto;
+}
+
+.printable .cont-list>ul>li{min-height:100px;}
+.printable .cont-list>ul>li.profile-box{min-height:170px;}
+
+.printable .cont-list>ul>li:after{
+	content:'';
+	width:700px;
+	height:1px;
+}
+
+.print-options{
+	width:200px;
+	display:block;
+	float:right;
+	text-align:right;
+}
+.print-options a{
+	margin:0;
+	padding:0 0 2px;
+	display:inline-block;
+	width:94px;
+	height:30px;
+	background:url(/images/layout/btn-search.png) no-repeat;
+	font:12px/30px BreeBold, Arial, Helvetica, sans-serif;
+	color:#fff;
+	text-align:center;
+	cursor:pointer;
+	border:0;
+	text-decoration:none;
+}
+@media print{
+	.hidefromprint{
+		display:none!important;
+	}
+}
+
+/*
+.printable .search-ttl, 
+.printable form, 
+.printable fieldset,
+.printable .cont-list,
+.printable .cont-list ul {
+    overflow: visible!important;
+}

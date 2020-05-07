@@ -1,0 +1,77 @@
+.lad-options-image{
+	display:block;
+	width:500px;
+	height:866px;
+	float:right;
+}
+.lad-options-image .lad-options-overlay{
+	display: none;
+	position: absolute;
+	z-index:30;
+}
+.lad-options-image .lad-options-overlay img{
+	border: 2px solid #9B4D58;
+	margin: -2px 0 0 -2px;
+}
+.lad-options-image .lad-options-blackout{
+	display: none;
+	position: absolute;
+	width:500px;
+	height:866px;
+	background-color:black;
+	z-index:20;
+}
+.advertising ul{
+	padding-left:15px;
+	margin-bottom:20px;
+}
+.top-doctor-badge{
+	display:block;
+	float:right;
+	margin-top:7px;
+	margin-right:2px;
+}
+
+table.more-features{
+	width:100%;
+	border-spacing: 0;
+	margin: 0 0 10px;
+}
+table.more-features thead{
+	font: 14px/16px BreeBold,Arial,Helvetica,sans-serif;
+	color: #A64942;
+}
+table.more-features thead th{
+	/*padding: 0 10px 20px;*/
+}
+table.more-features thead th:first-child{
+	text-align:left;
+}
+table.more-features tbody{
+	font: 16px/18px BreeRegular,Arial,Helvetica,sans-serif;
+}
+table.more-features tbody tr{
+	height: 18px;
+	overflow: visible;
+}
+table.more-features tr.odd-row{
+	background-color: #C7D8D8;
+}
+table.more-features tr td{
+	text-align: center;
+	color: #A64942;
+	height: 18px;
+	overflow: visible;
+}
+table.more-features tr td:first-child{
+	text-align: left;
+	color: #6C6C6C;
+}
+
+.table-check{
+			display:inline-block;
+			background:url(/images/doctors_only/checkmark.png) no-repeat;
+			width:29px;
+			height:28px;
+			margin: -10px 0 0;
+		}

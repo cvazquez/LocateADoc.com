@@ -1,0 +1,21 @@
+.gallerynavprompt-box .modal-box {
+width: 590px;
+clear: both;
+margin: 0px;
+padding: 0px;
+border: none;
+border-collapse: collapse;
+height: 212px;
+}
+
+.gallerynavprompt-box .modal-box .closebutton {
+background: url(/images/resources/bg-close-button.png) no-repeat;
+width: 94px;
+height: 31px;
+position: relative;
+top: 27px;
+left: 20px;
+cursor: pointer;
+float: right;
+margin-top: -15px;
+}

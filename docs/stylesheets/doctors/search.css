@@ -1,0 +1,61 @@
+hr {
+	background-color:#eee;
+	border:0px;
+	height:1px;
+}
+
+table.filter-box{
+	width:737px;
+}
+
+div.filter-scroll{
+	max-height:700px;
+	overflow-x:hidden;
+	overflow-y:auto;
+}
+
+table.allDocs{
+	width:686px;
+}
+
+table.allDocs td{
+	width:226px;
+	vertical-align:top;
+}
+
+table.allDocs ul, 
+table.allDocs li {
+	padding:0;
+	margin:0;
+	list-style:none;
+	font: 12px Arial,Helvetica,sans-serif;
+}
+
+form.location-form{
+	padding-bottom: 0px;
+}
+
+div.cont-list .photo{
+	margin-bottom: 10px;
+}
+div.cont-list div.tb-hold{
+	padding: 0;
+}
+.badge-list{
+	float:right;
+}
+.badge-list div{
+	display: inline-block;
+	margin-top: 10px;
+	clear: none!important;
+}
+
+ul.carousel-static{
+	width: 246px!important;
+	float: left;
+}
+ul.carousel-short{
+	width: 492px!important;
+	height: 102px;
+	overflow: hidden;
+}

@@ -1,0 +1,16 @@
+
+.askadoctor-conditions
+{
+	color: rgb(102, 102, 102);
+	font-family: arial, helvetica, clean, sans-serif; 
+	font-size: 10px; 
+	line-height: 12px; 
+	background-color: rgb(255, 255, 255);
+}
+
+.pattern-top div.post-info .metadata {
+width: 450px!important;
+font: 13px/15px Arial, Helvetica, sans-serif;
+font-style: italic;
+margin: 10px;
+}
